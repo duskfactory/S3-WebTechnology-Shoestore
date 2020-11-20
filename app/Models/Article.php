@@ -13,8 +13,8 @@ class Article extends Model
 
     protected $fillable = [
     	'name',
-	'price',
-	'image'
+	    'price',
+	    'image'
     ];
 
     public function comments() 

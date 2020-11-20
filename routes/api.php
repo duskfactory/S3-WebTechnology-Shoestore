@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::apiResource('articles', ArticleController::class);
+
+Route::apiResource('comments', CommentController::class)->except([
+    'index', 'show'
+]);
+
+Route::apiResource('users', UserController::class)->except(['index']);
+
+Route::resource('purchases', PurchaseController::class)->only(['store']);

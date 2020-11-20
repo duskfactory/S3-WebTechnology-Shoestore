@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Article as ArticleResource;
 use App\Models\Article;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        return ArticleResource::collection(Article::all());
     }
 
     /**
