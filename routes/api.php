@@ -21,5 +21,3 @@ Route::apiResource('comments', CommentController::class)->except([
 ]);
 
 Route::apiResource('users', UserController::class)->except(['index']);
-
-Route::resource('purchases', PurchaseController::class)->only(['store']);

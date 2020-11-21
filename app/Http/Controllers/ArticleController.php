@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\Article as ArticleResource;
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ArticleController extends Controller
 {
@@ -15,7 +16,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return ArticleResource::collection(Article::all());
+        return new ArticleResource::collection(Article::all());
     }
 
     /**
@@ -26,7 +27,22 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $articles = Article::all();
+        foreach ($articles as $article)
+            if ($article->name == $request->name)
+                return new Response('Duplicate article', 409)
+                    ->header('Content-Type', 'text/plain');
+
+        $article = new Article([
+            'name' => $request->name,
+            'price' => $request->price
+        ]);
+
+        $article->save()
+
+        return (new ArticleResource(
+            Article::firstWhere('name', $request->name)
+        ))->response($status = 201);
     }
 
     /**
@@ -37,7 +53,9 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        return new ArticleResource(
+            Article::where('id', $article->id)->firstOrFail()
+        );
     }
 
     /**
@@ -49,7 +67,15 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
+        $savedArticle = Article::findOrFail($request->id);
+
+        $savedArticle->name = $article->name;
+        $savedArticle->price = $article->price;
+        $savedArticle->image = $article->image;
+
+        $savedArticle->save()
+
+        return new ArticleResource($savedArticle);
     }
 
     /**
@@ -60,6 +86,8 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        $savedArticle = Article::findOrFail($article->id);
+        $savedArticle->delete();
+        return new Response();
     }
 }
