@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Comment as CommentResource;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class CommentController extends Controller
 {
@@ -15,7 +17,7 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -38,6 +40,8 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        $savedComment = Comment::findOrFail($comment->id);
+        $savedComment->delete();
+        return new Response;
     }
 }

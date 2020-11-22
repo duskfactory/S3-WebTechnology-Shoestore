@@ -53,9 +53,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        return new ArticleResource(
-            Article::where('id', $article->id)->firstOrFail()
-        );
+        return new ArticleResource(Article::findOrFail($article->id));
     }
 
     /**
@@ -88,6 +86,6 @@ class ArticleController extends Controller
     {
         $savedArticle = Article::findOrFail($article->id);
         $savedArticle->delete();
-        return new Response();
+        return new Response;
     }
 }
