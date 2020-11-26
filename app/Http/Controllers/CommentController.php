@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\Comment as CommentResource;
+use App\Models\Article;
 use App\Models\Comment;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -17,7 +19,22 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        
+        if (!$request->has(['title', 'content', 'user_id', 'article_id']))
+            return response('', 400);
+
+        $comment = new Comment([
+            'title' => $request->input('title'),
+            'content' => $request->input('content'),
+            'user' => $request->input('user_id'),
+            'article' => $request->input('article_id')
+        ]);
+
+        User::findOrFail($request->input('user_id'));
+        Article::findOrFail($request->input('article_id'));
+
+        $comment->save();
+
+        return response('', 201);
     }
 
     /**
@@ -29,7 +46,19 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-        //
+        if (!$request->has('id'))
+            return response('', 400);
+
+        $savedComment = Comment::findOrFail($request->input('id'));
+
+        if ($comment->title != '')
+            $savedComment->title = $comment->title;
+        if ($comment->content != '')
+            $savedComment->content = $comment->content;
+
+        $savedComment->save();
+
+        return new CommentResource($savedComment);
     }
 
     /**
@@ -42,6 +71,6 @@ class CommentController extends Controller
     {
         $savedComment = Comment::findOrFail($comment->id);
         $savedComment->delete();
-        return new Response;
+        return response();
     }
 }

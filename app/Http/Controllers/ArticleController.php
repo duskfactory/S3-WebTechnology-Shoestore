@@ -6,6 +6,7 @@ use App\Http\Resources\Article as ArticleResource;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -16,7 +17,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return new ArticleResource::collection(Article::all());
+        return ArticleResource::collection(Article::all());
     }
 
     /**
@@ -27,22 +28,27 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+        if (!$request->has(['name', 'price']))
+            return response('', 400);
+
         $articles = Article::all();
         foreach ($articles as $article)
-            if ($article->name == $request->name)
-                return new Response('Duplicate article', 409)
+            if ($article->name == $request->input('name'))
+                return response('Article already exists', 409)
                     ->header('Content-Type', 'text/plain');
 
         $article = new Article([
-            'name' => $request->name,
-            'price' => $request->price
+            'name' => $request->input('name'),
+            'price' => $request->input('price'),
+            'image' => $request->photo->store('articles')
         ]);
 
-        $article->save()
+        $article->save();
 
         return (new ArticleResource(
-            Article::firstWhere('name', $request->name)
-        ))->response($status = 201);
+                    Article::latest('created_at')->first()))
+                    ->response()
+                    ->setStatusCode(201);
     }
 
     /**
@@ -65,13 +71,21 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        $savedArticle = Article::findOrFail($request->id);
+        if (!$request->has('id') && !$request->hasFile('photo'))
+            return response('', 400);
 
-        $savedArticle->name = $article->name;
-        $savedArticle->price = $article->price;
-        $savedArticle->image = $article->image;
+        $savedArticle = Article::findOrFail($request->input('id'));
 
-        $savedArticle->save()
+        if ($article->name != '')
+            $savedArticle->name = $article->name;
+        if ($article->price != 0)
+            $savedArticle->price = $article->price;
+        if ($request->hasFile('photo')) {
+            Storage::delete($savedArticle->image);
+            $savedArticle->image = $request->photo->store('articles');
+        }
+
+        $savedArticle->save();
 
         return new ArticleResource($savedArticle);
     }
@@ -85,7 +99,8 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         $savedArticle = Article::findOrFail($article->id);
+        Storage::delete($savedArticle->image);
         $savedArticle->delete();
-        return new Response;
+        return response();
     }
 }

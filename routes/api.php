@@ -21,3 +21,9 @@ Route::apiResource('comments', CommentController::class)->except([
 ]);
 
 Route::apiResource('users', UserController::class)->except(['index']);
+
+Route::put('/users/makePurchase', [UserController::class, 'makePurchase']);
+
+Route::put('/users/addToWishlist', [UserController::class, 'addToWishlist']);
+
+Route::put('/users/removeFromWishlist', [UserController::class, 'removeFromWishlist']);
