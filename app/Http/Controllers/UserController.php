@@ -76,7 +76,7 @@ class UserController extends Controller
         if ($user->email != '')
             $savedUser->email = $user->email;
 
-        $flight->save();
+        $savedUser->save();
 
         return new UserResource($savedUser);
     }
@@ -109,6 +109,7 @@ class UserController extends Controller
         Article::findOrFail($request->input('article_id'));
 
         $user->purchases()->attach($request->input('article_id'));
+        $user->wishlist()->detach($request->input('article_id'));
         
         return response('', 201);
     }
@@ -134,11 +135,11 @@ class UserController extends Controller
 
     public function removeFromWishlist(Request $request) 
     {
-        if (!$request->has(['user_id', 'comment_id']))
+        if (!$request->has(['user_id', 'article_id']))
             return response('', 400);
 
         $user = User::findOrFail($request->input('user_id'));
-        $user->comments()->detach($request->input('comment_id'));
+        $user->wishlist()->detach($request->input('article_id'));
 
         return response();
     }

@@ -40,7 +40,7 @@ class ArticleController extends Controller
         $article = new Article([
             'name' => $request->input('name'),
             'price' => $request->input('price'),
-            'image' => $request->photo->store('articles')
+            'image' => $request->photo->store('articles', 'public')
         ]);
 
         $article->save();
@@ -82,7 +82,7 @@ class ArticleController extends Controller
             $savedArticle->price = $article->price;
         if ($request->hasFile('photo')) {
             Storage::delete($savedArticle->image);
-            $savedArticle->image = $request->photo->store('articles');
+            $savedArticle->image = $request->photo->store('articles', 'public');
         }
 
         $savedArticle->save();

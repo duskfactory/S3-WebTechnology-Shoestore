@@ -1,6 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +29,7 @@ Route::put('/users/makePurchase', [UserController::class, 'makePurchase']);
 Route::put('/users/addToWishlist', [UserController::class, 'addToWishlist']);
 
 Route::put('/users/removeFromWishlist', [UserController::class, 'removeFromWishlist']);
+
+Route::get('/test', function() {
+    return "ok";
+});

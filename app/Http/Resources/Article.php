@@ -17,7 +17,7 @@ class Article extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'price' => $this->price
+            'price' => $this->price,
             'image'=> $this->image,
             'comments' => Comment::collection($this->comments),
         ];
