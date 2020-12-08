@@ -38,7 +38,6 @@
 @endsection
 
 @section('scripts')
-<script src="{{ asset('js/axios.min.js') }}"></script>
 <script>
     const formDataToJson = elements => 
         [].reduce.call(elements, (data, elements) => {
@@ -56,19 +55,18 @@
             if (formNr == 0)
                 response = await axios.get('https://webtech.local:8080/users', data);
             else
-                response = await axios.post('https://webtech.local:8080/users/register', data);
+                response = await axios.get('https://webtech.local:8080/users/create', data);
         } catch(error) {
-            console.error(error);
-            location.reload();
+            location.href = "{{ route('error') }}";
         }
 
         if (response.status == 200 || response.status == 201) {
             let userData = response.data;
-            sessionStorage.name = userData.name;
-            sessionStorage.id = userData.id;
-            location.href = "https://webtech.local/user";
+            sessionStorage.setItem('elegance_user', userData.name);
+            sessionStorage.setItem('elegance_id', userData.id);
+            location.href = "{{ route('profile') }}";
         } else
-            location.reload();
+            location.href = "{{ route('error') }}";
     }
 
     document.forms[0].addEventListener('submit', function { formHandler(0) });

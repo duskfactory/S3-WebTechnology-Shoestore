@@ -19,7 +19,6 @@
 
 @section('scripts')
 <script src="{{ asset('js/vue.min.js') }}"></script>
-<script src="{{ asset('js/axios.min.js') }}"></script>
 <script>
     async function getArticles() {
         try {

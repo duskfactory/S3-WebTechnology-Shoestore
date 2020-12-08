@@ -26,8 +26,8 @@ class UserController extends Controller
             if ($user->name == $request->input('name') ||
                 $user->email == $request->input('email'))
                 return response(
-                           'User with this name or email already exists', 409)
-                           ->header('Content-Type', 'text/plain');
+                    'User with this name or email already exists', 409)
+                    ->header('Content-Type', 'text/plain');
 
         $user = new User([
             'name' => $request->input('name'),
@@ -52,7 +52,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return new UserResource(User::findOrFail($request->input('id')));
+        return new UserResource(User::findOrFail($user->id));
     }
 
     /**
@@ -112,35 +112,5 @@ class UserController extends Controller
         $user->wishlist()->detach($request->input('article_id'));
         
         return response('', 201);
-    }
-
-    /**
-     * Add the specified article to the user's wishlist.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function addToWishlist(Request $request) 
-    {
-        if (!$request->has(['user_id', 'article_id']))
-            return response('', 400);
-
-        $user = User::findOrFail($request->input('user_id'));
-        Article::findOrFail($request->input('article_id'));
-
-        $user->wishlist()->attach($request->input('article_id'));
-
-        return response('', 201);
-    }
-
-    public function removeFromWishlist(Request $request) 
-    {
-        if (!$request->has(['user_id', 'article_id']))
-            return response('', 400);
-
-        $user = User::findOrFail($request->input('user_id'));
-        $user->wishlist()->detach($request->input('article_id'));
-
-        return response();
     }
 }

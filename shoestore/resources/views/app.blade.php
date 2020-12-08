@@ -28,6 +28,7 @@
 <footer>
     <p>&#169;2020 Elegance - Created by Xander Storme</p>
 </footer>
+<script src="{{ asset('js/axios.min.js') }}"></script>
 @yield('scripts')
 </body>
 </html>
