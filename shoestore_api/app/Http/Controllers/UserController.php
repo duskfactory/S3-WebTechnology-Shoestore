@@ -52,7 +52,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return new UserResource(User::findOrFail($user->id));
+        return new UserResource(User::where('name', $user->name)->firstOrFail());
     }
 
     /**

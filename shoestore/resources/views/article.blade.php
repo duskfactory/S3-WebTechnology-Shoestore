@@ -10,11 +10,11 @@
     <button id="purchase">Purchase</button>
 </section>
 <section id="comments">
-    <textarea rows="5" cols="33"></textarea>
+    <input id="commentTitle" type="text" />
+    <textarea id="commentContent" rows="5" cols="33"></textarea>
     <button id="submitComment">Submit</button>
     <article v-for="comment in comments">
         <h1>@{{ title }}</h1>
-        <p>@{{  }}</p>
         <p>@{{ content }}</p>
     </article>
 </section>
@@ -23,15 +23,20 @@
 @section('scripts')
 <script src="{{ asset('js/vue.min.js') }}"></script>
 <script>
-    let article;
-    try
-        article = 
-            axios.get('https://webtech.local:8080/articles/' +
-                      location.href.substring(location.href.lastIndexOf('/')))
-            .data;
-    catch(error)
-        location.href = "{{ route('error') }}";
-    
+    const articleId = location.href.substring(location.href.lastIndexOf('/'));
+    async function getArticle() {
+        try
+            return await axios.get('https://webtech.local:8080/articles/' + articleId).data;
+        catch(error)
+            location.href = "{{ route('error') }}";
+    }
+
+    function isLoggedIn() {
+        return sessionStorage.getItem('elegance_id') != null;
+    }
+
+    const article = getArticle();
+
     const articleInfo = new Vue({
         el: '#article',
         data: {
@@ -49,16 +54,37 @@
     });
 
     document.getElementById('purchase').addEventListener('click', function() {
-        if (sessionStorage.getItem('elegance_user') != null) {
+        if (isLoggedIn()) {
             let purchase = {
                 user_id: sessionStorage.getItem('elegance_id'),
-                article_id: location.href.substring(location.href.lastIndexOf('/'))
+                article_id: articleId
             };
 
             try
                 axios.post('https://webtech.local:8080/users/makePurchase', 
                            JSON.stringify(purchase));
             catch(error)
+                location.href = "{{ route('error') }}";
+        } else
+            location.href = "{{ route('login') }}";
+    });
+
+    document.getElementById('submitComment').addEventListener('click', function() {
+        if (isLoggedIn()) {
+            let comment = {
+                user_id: sessionStorage.getItem('elegance_id'),
+                article_id: articleId,
+                title: document.getElementById('commentTitle').value,
+                content: document.getElementById('commentContent').value
+            };
+
+            if (!comment.title || !comment.content)
+                location.reload();
+
+            try {
+                axios.get('https://webtech.local:8080/comments/create', JSON.stringify(comment));
+                location.reload();
+            } catch(error)
                 location.href = "{{ route('error') }}";
         } else
             location.href = "{{ route('login') }}";

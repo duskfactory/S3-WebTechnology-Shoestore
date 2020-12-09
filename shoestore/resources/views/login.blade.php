@@ -53,12 +53,11 @@
         let response;
         try {
             if (formNr == 0)
-                response = await axios.get('https://webtech.local:8080/users', data);
+                response = await axios.get('https://webtech.local:8080/users/login', data);
             else
                 response = await axios.get('https://webtech.local:8080/users/create', data);
-        } catch(error) {
+        } catch(error)
             location.href = "{{ route('error') }}";
-        }
 
         if (response.status == 200 || response.status == 201) {
             let userData = response.data;

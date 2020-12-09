@@ -24,6 +24,8 @@ Route::apiResource('comments', CommentController::class)->except([
 
 Route::apiResource('users', UserController::class)->except(['index']);
 
+Route::get('/users/login', [UserController::class, 'show']);
+
 Route::put('/users/makePurchase', [UserController::class, 'makePurchase']);
 
 Route::get('/test', function() {
