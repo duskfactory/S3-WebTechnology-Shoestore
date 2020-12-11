@@ -24,3 +24,11 @@ Route::get('/article/{id}', function($id) {
 Route::get('/profile', function() {
     return view('user');
 })->name('profile');
+
+Route::get('/error', function() {
+    return view('error');
+})->name('error');
+
+Route::get('/login', function() {
+    return view('login');
+})->name('login');

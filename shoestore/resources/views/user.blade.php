@@ -18,9 +18,12 @@
 @section('scripts')
 <script src="{{ asset('js/vue.min.js') }}"></script>
 <script>
+    if (sessionStorage.getItem('elegance_id') == null)
+        location.href = "{{ route('login') }}";
+
     async function getUser() {
         try
-            return await axios.get('https://webtech.local:8080/users/' + 
+            return await axios.get('https://webtech.local:8443/users/' + 
             sessionStorage.getItem('elegance_id')).data;
         catch(error)
             location.href = "{{ route('error') }}";

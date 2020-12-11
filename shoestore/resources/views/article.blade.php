@@ -24,9 +24,10 @@
 <script src="{{ asset('js/vue.min.js') }}"></script>
 <script>
     const articleId = location.href.substring(location.href.lastIndexOf('/'));
+    const baseUrl = "https://webtech.local:8443/";
     async function getArticle() {
         try
-            return await axios.get('https://webtech.local:8080/articles/' + articleId).data;
+            return await axios.get(baseUrl + 'articles/' + articleId).data;
         catch(error)
             location.href = "{{ route('error') }}";
     }
@@ -61,8 +62,7 @@
             };
 
             try
-                axios.post('https://webtech.local:8080/users/makePurchase', 
-                           JSON.stringify(purchase));
+                axios.post(baseUrl + 'users/makePurchase', JSON.stringify(purchase));
             catch(error)
                 location.href = "{{ route('error') }}";
         } else
@@ -82,7 +82,7 @@
                 location.reload();
 
             try {
-                axios.get('https://webtech.local:8080/comments/create', JSON.stringify(comment));
+                axios.get(baseUrl + 'comments/create', JSON.stringify(comment));
                 location.reload();
             } catch(error)
                 location.href = "{{ route('error') }}";

@@ -39,6 +39,10 @@
 
 @section('scripts')
 <script>
+    if (sessionStorage.getItem('elegance_id') != null)
+        location.href = "{{ route('profile') }}";
+
+    const baseUrl = "https://webtech.local:8443/";
     const formDataToJson = elements => 
         [].reduce.call(elements, (data, elements) => {
             data[element.name] = element.value;
@@ -53,9 +57,9 @@
         let response;
         try {
             if (formNr == 0)
-                response = await axios.get('https://webtech.local:8080/users/login', data);
+                response = await axios.get(baseUrl + 'users/login', data);
             else
-                response = await axios.get('https://webtech.local:8080/users/create', data);
+                response = await axios.get(baseUrl + 'users/create', data);
         } catch(error)
             location.href = "{{ route('error') }}";
 

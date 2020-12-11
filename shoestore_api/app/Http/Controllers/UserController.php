@@ -52,7 +52,16 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return new UserResource(User::where('name', $user->name)->firstOrFail());
+        return new UserResource(User::findOrFail($user->id));
+    }
+
+    public function login(User $user)
+    {
+        $foundUser = User::where('name', $user->name)->firstOrFail();
+        if ($user->password == $foundUser->password)
+            return new UserResource($foundUser);
+        else
+            return response('', 403);
     }
 
     /**
