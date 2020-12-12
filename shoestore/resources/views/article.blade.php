@@ -24,7 +24,7 @@
 <script src="{{ asset('js/vue.min.js') }}"></script>
 <script>
     const articleId = location.href.substring(location.href.lastIndexOf('/'));
-    const baseUrl = "https://webtech.local:8443/";
+    const baseUrl = "https://localhost:8443/";
     async function getArticle() {
         try
             return await axios.get(baseUrl + 'articles/' + articleId).data;

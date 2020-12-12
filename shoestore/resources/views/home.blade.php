@@ -22,7 +22,7 @@
 <script>
     async function getArticles() {
         try {
-            const response = await axios.get('https://webtech.local:8080/articles');
+            const response = await axios.get('https://localhost:8443/api/articles');
             console.log(response);
             return response.data;
         } catch(error) {

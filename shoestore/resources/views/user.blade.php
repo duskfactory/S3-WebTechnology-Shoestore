@@ -23,7 +23,7 @@
 
     async function getUser() {
         try
-            return await axios.get('https://webtech.local:8443/users/' + 
+            return await axios.get('https://localhost:8443/users/' + 
             sessionStorage.getItem('elegance_id')).data;
         catch(error)
             location.href = "{{ route('error') }}";

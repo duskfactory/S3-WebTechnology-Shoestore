@@ -42,7 +42,7 @@
     if (sessionStorage.getItem('elegance_id') != null)
         location.href = "{{ route('profile') }}";
 
-    const baseUrl = "https://webtech.local:8443/";
+    const baseUrl = "https://localhost:8443/";
     const formDataToJson = elements => 
         [].reduce.call(elements, (data, elements) => {
             data[element.name] = element.value;
