@@ -1,0 +1,44 @@
+nav {
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: greenyellow;
+    }
+
+    li {
+        float: left;
+
+        li:last-child {
+            float: right;
+        }
+
+        a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+
+            :hover {
+                background-color: green;
+            }
+        }
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+header img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%; 
+}
+
+footer p {
+    text-align: center;
+}
