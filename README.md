@@ -1,0 +1,1 @@
+To run this website, /var/www/webtech should link to /home/user/code/shoestore/public
