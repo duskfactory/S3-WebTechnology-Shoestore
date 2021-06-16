@@ -3,11 +3,21 @@
 namespace Illuminate\Database\Concerns;
 
 use Illuminate\Container\Container;
+use Illuminate\Database\MultipleRecordsFoundException;
+use Illuminate\Database\RecordsNotFoundException;
+use Illuminate\Pagination\CursorPaginator;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
+use Illuminate\Support\Traits\Conditionable;
+use InvalidArgumentException;
+use RuntimeException;
 
 trait BuildsQueries
 {
+    use Conditionable;
+
     /**
      * Chunk the results of the query.
      *
@@ -49,11 +59,33 @@ trait BuildsQueries
     }
 
     /**
+     * Run a map over each item while chunking.
+     *
+     * @param  callable  $callback
+     * @param  int  $count
+     * @return \Illuminate\Support\Collection
+     */
+    public function chunkMap(callable $callback, $count = 1000)
+    {
+        $collection = Collection::make();
+
+        $this->chunk($count, function ($items) use ($collection, $callback) {
+            $items->each(function ($item) use ($collection, $callback) {
+                $collection->push($callback($item));
+            });
+        });
+
+        return $collection;
+    }
+
+    /**
      * Execute a callback over each item while chunking.
      *
      * @param  callable  $callback
      * @param  int  $count
      * @return bool
+     *
+     * @throws \RuntimeException
      */
     public function each(callable $callback, $count = 1000)
     {
@@ -108,6 +140,10 @@ trait BuildsQueries
 
             $lastId = $results->last()->{$alias};
 
+            if ($lastId === null) {
+                throw new RuntimeException("The chunkById operation was aborted because the [{$alias}] column is not present in the query result.");
+            }
+
             unset($results);
 
             $page++;
@@ -137,6 +173,80 @@ trait BuildsQueries
     }
 
     /**
+     * Query lazily, by chunks of the given size.
+     *
+     * @param  int  $chunkSize
+     * @return \Illuminate\Support\LazyCollection
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function lazy($chunkSize = 1000)
+    {
+        if ($chunkSize < 1) {
+            throw new InvalidArgumentException('The chunk size should be at least 1');
+        }
+
+        $this->enforceOrderBy();
+
+        return LazyCollection::make(function () use ($chunkSize) {
+            $page = 1;
+
+            while (true) {
+                $results = $this->forPage($page++, $chunkSize)->get();
+
+                foreach ($results as $result) {
+                    yield $result;
+                }
+
+                if ($results->count() < $chunkSize) {
+                    return;
+                }
+            }
+        });
+    }
+
+    /**
+     * Query lazily, by chunking the results of a query by comparing IDs.
+     *
+     * @param  int  $count
+     * @param  string|null  $column
+     * @param  string|null  $alias
+     * @return \Illuminate\Support\LazyCollection
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function lazyById($chunkSize = 1000, $column = null, $alias = null)
+    {
+        if ($chunkSize < 1) {
+            throw new InvalidArgumentException('The chunk size should be at least 1');
+        }
+
+        $column = $column ?? $this->defaultKeyName();
+
+        $alias = $alias ?? $column;
+
+        return LazyCollection::make(function () use ($chunkSize, $column, $alias) {
+            $lastId = null;
+
+            while (true) {
+                $clone = clone $this;
+
+                $results = $clone->forPageAfterId($chunkSize, $lastId, $column)->get();
+
+                foreach ($results as $result) {
+                    yield $result;
+                }
+
+                if ($results->count() < $chunkSize) {
+                    return;
+                }
+
+                $lastId = $results->last()->{$alias};
+            }
+        });
+    }
+
+    /**
      * Execute the query and get the first result.
      *
      * @param  array|string  $columns
@@ -148,22 +258,27 @@ trait BuildsQueries
     }
 
     /**
-     * Apply the callback's query changes if the given "value" is true.
+     * Execute the query and get the first result if it's the sole matching record.
      *
-     * @param  mixed  $value
-     * @param  callable  $callback
-     * @param  callable|null  $default
-     * @return mixed|$this
+     * @param  array|string  $columns
+     * @return \Illuminate\Database\Eloquent\Model|object|static|null
+     *
+     * @throws \Illuminate\Database\RecordsNotFoundException
+     * @throws \Illuminate\Database\MultipleRecordsFoundException
      */
-    public function when($value, $callback, $default = null)
+    public function sole($columns = ['*'])
     {
-        if ($value) {
-            return $callback($this, $value) ?: $this;
-        } elseif ($default) {
-            return $default($this, $value) ?: $this;
+        $result = $this->take(2)->get($columns);
+
+        if ($result->isEmpty()) {
+            throw new RecordsNotFoundException;
         }
 
-        return $this;
+        if ($result->count() > 1) {
+            throw new MultipleRecordsFoundException;
+        }
+
+        return $result->first();
     }
 
     /**
@@ -175,25 +290,6 @@ trait BuildsQueries
     public function tap($callback)
     {
         return $this->when(true, $callback);
-    }
-
-    /**
-     * Apply the callback's query changes if the given "value" is false.
-     *
-     * @param  mixed  $value
-     * @param  callable  $callback
-     * @param  callable|null  $default
-     * @return mixed|$this
-     */
-    public function unless($value, $callback, $default = null)
-    {
-        if (! $value) {
-            return $callback($this, $value) ?: $this;
-        } elseif ($default) {
-            return $default($this, $value) ?: $this;
-        }
-
-        return $this;
     }
 
     /**
@@ -226,6 +322,22 @@ trait BuildsQueries
     {
         return Container::getInstance()->makeWith(Paginator::class, compact(
             'items', 'perPage', 'currentPage', 'options'
+        ));
+    }
+
+    /**
+     * Create a new cursor paginator instance.
+     *
+     * @param  \Illuminate\Support\Collection  $items
+     * @param  int  $perPage
+     * @param  \Illuminate\Pagination\Cursor  $cursor
+     * @param  array  $options
+     * @return \Illuminate\Pagination\Paginator
+     */
+    protected function cursorPaginator($items, $perPage, $cursor, $options)
+    {
+        return Container::getInstance()->makeWith(CursorPaginator::class, compact(
+            'items', 'perPage', 'cursor', 'options'
         ));
     }
 }

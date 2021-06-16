@@ -9,20 +9,9 @@ class Article extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-    	'name',
-	    'price',
-	    'image'
-    ];
-
     public function comments() 
     {
     	return $this->hasMany('App\Models\Comment');
-    }
-
-    public function wishlist() 
-    {
-    	return $this->belongsToMany('App\Models\User', 'wishlist');
     }
 
     public function purchases() 

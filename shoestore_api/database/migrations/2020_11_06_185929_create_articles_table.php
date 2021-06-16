@@ -15,8 +15,10 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-	    $table->string('name', 255);
-	    $table->float('price', 4, 2);
+            $table->timestamps();
+	        $table->string('name', 255);
+	        $table->float('price', 4, 2);
+            $table->string('image', 255);
         });
     }
 

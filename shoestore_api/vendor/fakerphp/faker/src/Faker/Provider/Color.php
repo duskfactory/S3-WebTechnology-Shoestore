@@ -2,15 +2,12 @@
 
 namespace Faker\Provider;
 
-/**
- * @author lsv
- */
 class Color extends Base
 {
     protected static $safeColorNames = [
         'black', 'maroon', 'green', 'navy', 'olive',
         'purple', 'teal', 'lime', 'blue', 'silver',
-        'gray', 'yellow', 'fuchsia', 'aqua', 'white'
+        'gray', 'yellow', 'fuchsia', 'aqua', 'white',
     ];
 
     protected static $allColorNames = [
@@ -39,7 +36,7 @@ class Color extends Base
         'PowderBlue', 'Purple', 'Red', 'RosyBrown', 'RoyalBlue', 'SaddleBrown', 'Salmon',
         'SandyBrown', 'SeaGreen', 'SeaShell', 'Sienna', 'Silver', 'SkyBlue', 'SlateBlue',
         'SlateGray', 'Snow', 'SpringGreen', 'SteelBlue', 'Tan', 'Teal', 'Thistle', 'Tomato',
-        'Turquoise', 'Violet', 'Wheat', 'White', 'WhiteSmoke', 'Yellow', 'YellowGreen'
+        'Turquoise', 'Violet', 'Wheat', 'White', 'WhiteSmoke', 'Yellow', 'YellowGreen',
     ];
 
     /**
@@ -47,7 +44,7 @@ class Color extends Base
      */
     public static function hexColor()
     {
-        return '#' . str_pad(dechex(mt_rand(1, 16777215)), 6, '0', STR_PAD_LEFT);
+        return '#' . str_pad(dechex(self::numberBetween(1, 16777215)), 6, '0', STR_PAD_LEFT);
     }
 
     /**
@@ -55,7 +52,7 @@ class Color extends Base
      */
     public static function safeHexColor()
     {
-        $color = str_pad(dechex(mt_rand(0, 255)), 3, '0', STR_PAD_LEFT);
+        $color = str_pad(dechex(self::numberBetween(0, 255)), 3, '0', STR_PAD_LEFT);
 
         return '#' . $color[0] . $color[0] . $color[1] . $color[1] . $color[2] . $color[2];
     }
@@ -70,7 +67,7 @@ class Color extends Base
         return [
             hexdec(substr($color, 1, 2)),
             hexdec(substr($color, 3, 2)),
-            hexdec(substr($color, 5, 2))
+            hexdec(substr($color, 5, 2)),
         ];
     }
 
@@ -116,28 +113,30 @@ class Color extends Base
 
     /**
      * @example '340,50,20'
+     *
      * @return string
      */
     public static function hslColor()
     {
         return sprintf(
             '%s,%s,%s',
-            static::numberBetween(0, 360),
-            static::numberBetween(0, 100),
-            static::numberBetween(0, 100)
+            self::numberBetween(0, 360),
+            self::numberBetween(0, 100),
+            self::numberBetween(0, 100)
         );
     }
 
     /**
      * @example array(340, 50, 20)
+     *
      * @return array
      */
     public static function hslColorAsArray()
     {
         return [
-            static::numberBetween(0, 360),
-            static::numberBetween(0, 100),
-            static::numberBetween(0, 100)
+            self::numberBetween(0, 360),
+            self::numberBetween(0, 100),
+            self::numberBetween(0, 100),
         ];
     }
 }

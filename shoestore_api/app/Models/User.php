@@ -33,11 +33,6 @@ class User extends Authenticatable
     	return $this->belongsToMany('App\Models\Article', 'purchases');
     }
 
-    public function wishlist() 
-    {
-    	return $this->belongsToMany('App\Models\Article', 'wishlist');
-    }
-
     /**
      * The attributes that should be hidden for arrays.
      *
