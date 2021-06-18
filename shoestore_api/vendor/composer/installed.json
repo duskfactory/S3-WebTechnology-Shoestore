@@ -99,12 +99,6 @@
             "bignum",
             "brick",
             "math"
-        ],
-        "funding": [
-            {
-                "url": "https://tidelift.com/funding/github/packagist/brick/math",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -188,20 +182,6 @@
             "php",
             "redis",
             "xcache"
-        ],
-        "funding": [
-            {
-                "url": "https://www.doctrine-project.org/sponsorship.html",
-                "type": "custom"
-            },
-            {
-                "url": "https://www.patreon.com/phpdoctrine",
-                "type": "patreon"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/doctrine%2Fcache",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -293,20 +273,6 @@
             "sqlite",
             "sqlserver",
             "sqlsrv"
-        ],
-        "funding": [
-            {
-                "url": "https://www.doctrine-project.org/sponsorship.html",
-                "type": "custom"
-            },
-            {
-                "url": "https://www.patreon.com/phpdoctrine",
-                "type": "patreon"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/doctrine%2Fdbal",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -426,20 +392,6 @@
             "event manager",
             "event system",
             "events"
-        ],
-        "funding": [
-            {
-                "url": "https://www.doctrine-project.org/sponsorship.html",
-                "type": "custom"
-            },
-            {
-                "url": "https://www.patreon.com/phpdoctrine",
-                "type": "patreon"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/doctrine%2Fevent-manager",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -519,20 +471,6 @@
             "strings",
             "uppercase",
             "words"
-        ],
-        "funding": [
-            {
-                "url": "https://www.doctrine-project.org/sponsorship.html",
-                "type": "custom"
-            },
-            {
-                "url": "https://www.patreon.com/phpdoctrine",
-                "type": "patreon"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/doctrine%2Finflector",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -586,20 +524,6 @@
         "keywords": [
             "constructor",
             "instantiate"
-        ],
-        "funding": [
-            {
-                "url": "https://www.doctrine-project.org/sponsorship.html",
-                "type": "custom"
-            },
-            {
-                "url": "https://www.patreon.com/phpdoctrine",
-                "type": "patreon"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/doctrine%2Finstantiator",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -664,20 +588,6 @@
             "lexer",
             "parser",
             "php"
-        ],
-        "funding": [
-            {
-                "url": "https://www.doctrine-project.org/sponsorship.html",
-                "type": "custom"
-            },
-            {
-                "url": "https://www.patreon.com/phpdoctrine",
-                "type": "patreon"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/doctrine%2Flexer",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -731,12 +641,6 @@
         "keywords": [
             "cron",
             "schedule"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/dragonmantank",
-                "type": "github"
-            }
         ]
     },
     {
@@ -797,12 +701,6 @@
             "emailvalidator",
             "validation",
             "validator"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/egulias",
-                "type": "github"
-            }
         ]
     },
     {
@@ -860,12 +758,6 @@
             "facade",
             "flare",
             "reporting"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/spatie",
-                "type": "github"
-            }
         ]
     },
     {
@@ -1172,12 +1064,6 @@
             "library",
             "throwable",
             "whoops"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/denis-sokolov",
-                "type": "github"
-            }
         ]
     },
     {
@@ -1247,12 +1133,6 @@
             "cors",
             "crossdomain",
             "laravel"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/barryvdh",
-                "type": "github"
-            }
         ]
     },
     {
@@ -1307,16 +1187,6 @@
             "Result Type",
             "Result-Type",
             "result"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/GrahamCampbell",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/graham-campbell/result-type",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -1400,24 +1270,6 @@
             "psr-7",
             "rest",
             "web service"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/GrahamCampbell",
-                "type": "github"
-            },
-            {
-                "url": "https://github.com/Nyholm",
-                "type": "github"
-            },
-            {
-                "url": "https://github.com/alexeyshockov",
-                "type": "github"
-            },
-            {
-                "url": "https://github.com/gmponos",
-                "type": "github"
-            }
         ]
     },
     {
@@ -1593,61 +1445,6 @@
         "description": "This is the PHP port of Hamcrest Matchers",
         "keywords": [
             "test"
-        ]
-    },
-    {
-        "name": "laravel/breeze",
-        "version": "v1.3.0",
-        "version_normalized": "1.3.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/laravel/breeze.git",
-            "reference": "31083193c2050a970bfd38378a93ecf166b5c985"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/laravel/breeze/zipball/31083193c2050a970bfd38378a93ecf166b5c985",
-            "reference": "31083193c2050a970bfd38378a93ecf166b5c985",
-            "shasum": ""
-        },
-        "require": {
-            "illuminate/filesystem": "^8.42",
-            "illuminate/support": "^8.42",
-            "illuminate/validation": "^8.42",
-            "php": "^7.3|^8.0"
-        },
-        "time": "2021-06-08T20:27:33+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.x-dev"
-            },
-            "laravel": {
-                "providers": [
-                    "Laravel\\Breeze\\BreezeServiceProvider"
-                ]
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Laravel\\Breeze\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Taylor Otwell",
-                "email": "taylor@laravel.com"
-            }
-        ],
-        "description": "Minimal Laravel authentication scaffolding with Blade and Tailwind.",
-        "keywords": [
-            "auth",
-            "laravel"
         ]
     },
     {
@@ -1951,32 +1748,6 @@
             "markdown",
             "md",
             "parser"
-        ],
-        "funding": [
-            {
-                "url": "https://enjoy.gitstore.app/repositories/thephpleague/commonmark",
-                "type": "custom"
-            },
-            {
-                "url": "https://www.colinodell.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://www.paypal.me/colinpodell/10.00",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/colinodell",
-                "type": "github"
-            },
-            {
-                "url": "https://www.patreon.com/colinodell",
-                "type": "patreon"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/league/commonmark",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -2064,12 +1835,6 @@
             "s3",
             "sftp",
             "storage"
-        ],
-        "funding": [
-            {
-                "url": "https://offset.earth/frankdejonge",
-                "type": "other"
-            }
         ]
     },
     {
@@ -2114,17 +1879,7 @@
                 "email": "info@frankdejonge.nl"
             }
         ],
-        "description": "Mime-type detection for Flysystem",
-        "funding": [
-            {
-                "url": "https://github.com/frankdejonge",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/league/flysystem",
-                "type": "tidelift"
-            }
-        ]
+        "description": "Mime-type detection for Flysystem"
     },
     {
         "name": "mockery/mockery",
@@ -2278,16 +2033,6 @@
             "log",
             "logging",
             "psr-3"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/Seldaek",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/monolog/monolog",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -2338,12 +2083,6 @@
             "duplicate",
             "object",
             "object graph"
-        ],
-        "funding": [
-            {
-                "url": "https://tidelift.com/funding/github/packagist/myclabs/deep-copy",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -2425,16 +2164,6 @@
             "date",
             "datetime",
             "time"
-        ],
-        "funding": [
-            {
-                "url": "https://opencollective.com/Carbon",
-                "type": "open_collective"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/nesbot/carbon",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -2561,20 +2290,6 @@
             "laravel-zero",
             "php",
             "symfony"
-        ],
-        "funding": [
-            {
-                "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/nunomaduro",
-                "type": "github"
-            },
-            {
-                "url": "https://www.patreon.com/nunomaduro",
-                "type": "patreon"
-            }
         ]
     },
     {
@@ -2954,16 +2669,6 @@
             "option",
             "php",
             "type"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/GrahamCampbell",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/phpoption/phpoption",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -3098,12 +2803,6 @@
             "coverage",
             "testing",
             "xunit"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -3156,12 +2855,6 @@
         "keywords": [
             "filesystem",
             "iterator"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -3217,12 +2910,6 @@
         "homepage": "https://github.com/sebastianbergmann/php-invoker/",
         "keywords": [
             "process"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -3274,12 +2961,6 @@
         "homepage": "https://github.com/sebastianbergmann/php-text-template/",
         "keywords": [
             "template"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -3331,12 +3012,6 @@
         "homepage": "https://github.com/sebastianbergmann/php-timer/",
         "keywords": [
             "timer"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -3428,16 +3103,6 @@
             "phpunit",
             "testing",
             "xunit"
-        ],
-        "funding": [
-            {
-                "url": "https://phpunit.de/donate.html",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -3914,16 +3579,6 @@
             "map",
             "queue",
             "set"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/ramsey",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/ramsey/collection",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -4007,12 +3662,6 @@
             "guid",
             "identifier",
             "uuid"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/ramsey",
-                "type": "github"
-            }
         ]
     },
     {
@@ -4061,13 +3710,7 @@
             }
         ],
         "description": "Library for parsing CLI options",
-        "homepage": "https://github.com/sebastianbergmann/cli-parser",
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
-        ]
+        "homepage": "https://github.com/sebastianbergmann/cli-parser"
     },
     {
         "name": "sebastian/code-unit",
@@ -4115,13 +3758,7 @@
             }
         ],
         "description": "Collection of value objects that represent the PHP code units",
-        "homepage": "https://github.com/sebastianbergmann/code-unit",
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
-        ]
+        "homepage": "https://github.com/sebastianbergmann/code-unit"
     },
     {
         "name": "sebastian/code-unit-reverse-lookup",
@@ -4168,13 +3805,7 @@
             }
         ],
         "description": "Looks up which function or method a line of code belongs to",
-        "homepage": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/",
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
-        ]
+        "homepage": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/"
     },
     {
         "name": "sebastian/comparator",
@@ -4240,12 +3871,6 @@
             "comparator",
             "compare",
             "equality"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -4295,13 +3920,7 @@
             }
         ],
         "description": "Library for calculating the complexity of PHP code units",
-        "homepage": "https://github.com/sebastianbergmann/complexity",
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
-        ]
+        "homepage": "https://github.com/sebastianbergmann/complexity"
     },
     {
         "name": "sebastian/diff",
@@ -4359,12 +3978,6 @@
             "udiff",
             "unidiff",
             "unified diff"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -4420,12 +4033,6 @@
             "Xdebug",
             "environment",
             "hhvm"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -4495,12 +4102,6 @@
         "keywords": [
             "export",
             "exporter"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -4557,12 +4158,6 @@
         "homepage": "http://www.github.com/sebastianbergmann/global-state",
         "keywords": [
             "global state"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -4612,13 +4207,7 @@
             }
         ],
         "description": "Library for counting the lines of code in PHP source code",
-        "homepage": "https://github.com/sebastianbergmann/lines-of-code",
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
-        ]
+        "homepage": "https://github.com/sebastianbergmann/lines-of-code"
     },
     {
         "name": "sebastian/object-enumerator",
@@ -4667,13 +4256,7 @@
             }
         ],
         "description": "Traverses array structures and object graphs to enumerate all referenced objects",
-        "homepage": "https://github.com/sebastianbergmann/object-enumerator/",
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
-        ]
+        "homepage": "https://github.com/sebastianbergmann/object-enumerator/"
     },
     {
         "name": "sebastian/object-reflector",
@@ -4720,13 +4303,7 @@
             }
         ],
         "description": "Allows reflection of object attributes, including inherited and non-public ones",
-        "homepage": "https://github.com/sebastianbergmann/object-reflector/",
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
-        ]
+        "homepage": "https://github.com/sebastianbergmann/object-reflector/"
     },
     {
         "name": "sebastian/recursion-context",
@@ -4781,13 +4358,7 @@
             }
         ],
         "description": "Provides functionality to recursively process PHP variables",
-        "homepage": "http://www.github.com/sebastianbergmann/recursion-context",
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
-        ]
+        "homepage": "http://www.github.com/sebastianbergmann/recursion-context"
     },
     {
         "name": "sebastian/resource-operations",
@@ -4834,13 +4405,7 @@
             }
         ],
         "description": "Provides a list of PHP built-in functions that operate on resources",
-        "homepage": "https://www.github.com/sebastianbergmann/resource-operations",
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
-        ]
+        "homepage": "https://www.github.com/sebastianbergmann/resource-operations"
     },
     {
         "name": "sebastian/type",
@@ -4888,13 +4453,7 @@
             }
         ],
         "description": "Collection of value objects that represent the types of the PHP type system",
-        "homepage": "https://github.com/sebastianbergmann/type",
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
-        ]
+        "homepage": "https://github.com/sebastianbergmann/type"
     },
     {
         "name": "sebastian/version",
@@ -4939,13 +4498,7 @@
             }
         ],
         "description": "Library that helps with managing the version number of Git-hosted PHP projects",
-        "homepage": "https://github.com/sebastianbergmann/version",
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
-        ]
+        "homepage": "https://github.com/sebastianbergmann/version"
     },
     {
         "name": "swiftmailer/swiftmailer",
@@ -5008,16 +4561,6 @@
             "email",
             "mail",
             "mailer"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/swiftmailer/swiftmailer",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -5101,20 +4644,6 @@
             "command line",
             "console",
             "terminal"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -5165,21 +4694,7 @@
             }
         ],
         "description": "Converts CSS selectors to XPath expressions",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/deprecation-contracts",
@@ -5231,21 +4746,7 @@
             }
         ],
         "description": "A generic function and convention to trigger deprecation notices",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/error-handler",
@@ -5299,21 +4800,7 @@
             }
         ],
         "description": "Provides tools to manage errors and ease debugging PHP code",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/event-dispatcher",
@@ -5383,21 +4870,7 @@
             }
         ],
         "description": "Provides tools that allow your application components to communicate with each other by dispatching events and listening to them",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/event-dispatcher-contracts",
@@ -5461,20 +4934,6 @@
             "interfaces",
             "interoperability",
             "standards"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -5521,21 +4980,7 @@
             }
         ],
         "description": "Finds files and directories via an intuitive fluent interface",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/http-client-contracts",
@@ -5598,20 +5043,6 @@
             "interfaces",
             "interoperability",
             "standards"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -5670,21 +5101,7 @@
             }
         ],
         "description": "Defines an object-oriented layer for the HTTP specification",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/http-kernel",
@@ -5781,21 +5198,7 @@
             }
         ],
         "description": "Provides a structured process for converting a Request into a Response",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/mime",
@@ -5863,20 +5266,6 @@
         "keywords": [
             "mime",
             "mime-type"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -5941,20 +5330,6 @@
             "ctype",
             "polyfill",
             "portable"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -6020,20 +5395,6 @@
             "polyfill",
             "portable",
             "shim"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -6100,20 +5461,6 @@
             "polyfill",
             "portable",
             "shim"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -6186,20 +5533,6 @@
             "polyfill",
             "portable",
             "shim"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -6269,20 +5602,6 @@
             "polyfill",
             "portable",
             "shim"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -6348,20 +5667,6 @@
             "polyfill",
             "portable",
             "shim"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -6423,20 +5728,6 @@
             "polyfill",
             "portable",
             "shim"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -6501,20 +5792,6 @@
             "polyfill",
             "portable",
             "shim"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -6583,20 +5860,6 @@
             "polyfill",
             "portable",
             "shim"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -6644,21 +5907,7 @@
             }
         ],
         "description": "Executes commands in sub-processes",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/routing",
@@ -6733,20 +5982,6 @@
             "routing",
             "uri",
             "url"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -6811,20 +6046,6 @@
             "interfaces",
             "interoperability",
             "standards"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -6893,20 +6114,6 @@
             "unicode",
             "utf-8",
             "utf8"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -6987,21 +6194,7 @@
             }
         ],
         "description": "Provides tools to internationalize your application",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/translation-contracts",
@@ -7064,20 +6257,6 @@
             "interfaces",
             "interoperability",
             "standards"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -7151,20 +6330,6 @@
         "keywords": [
             "debug",
             "dump"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -7207,13 +6372,7 @@
                 "role": "Developer"
             }
         ],
-        "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
-        "funding": [
-            {
-                "url": "https://github.com/theseer",
-                "type": "github"
-            }
-        ]
+        "description": "A small library for converting tokenized PHP source code into XML and potentially other formats"
     },
     {
         "name": "tijsverkoyen/css-to-inline-styles",
@@ -7332,16 +6491,6 @@
             "dotenv",
             "env",
             "environment"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/GrahamCampbell",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/vlucas/phpdotenv",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -7392,28 +6541,6 @@
             "ascii",
             "clean",
             "php"
-        ],
-        "funding": [
-            {
-                "url": "https://www.paypal.me/moelleken",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/voku",
-                "type": "github"
-            },
-            {
-                "url": "https://opencollective.com/portable-ascii",
-                "type": "open_collective"
-            },
-            {
-                "url": "https://www.patreon.com/voku",
-                "type": "patreon"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/voku/portable-ascii",
-                "type": "tidelift"
-            }
         ]
     },
     {
