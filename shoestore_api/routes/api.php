@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::apiResource('articles', ArticleController::class);
+Route::apiResource('articles', ArticleController::class)->except([
+    'store', 'update', 'destroy'
+]);
 
 Route::apiResource('comments', CommentController::class)->except([
     'index', 'show'
@@ -26,6 +28,6 @@ Route::apiResource('users', UserController::class)->except(['index']);
 
 Route::put('/makePurchase', [UserController::class, 'makePurchase']);
 
-Route::get('/', function() {
+Route::get('/test', function() {
     return "ok";
 });

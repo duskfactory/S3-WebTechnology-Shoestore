@@ -19,22 +19,26 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        if (!$request->has(['title', 'content', 'user_id', 'article_id']))
-            return response('', 400);
-
-        $comment = new Comment([
-            'title' => $request->input('title'),
-            'content' => $request->input('content'),
-            'user' => $request->input('user_id'),
-            'article' => $request->input('article_id')
+        $validated = $request->validate([
+            'title' => 'required|string',
+            'content' => 'required|string',
+            'user' => 'required|integer',
+            'article' => 'required|integer'
         ]);
 
-        User::findOrFail($request->input('user_id'));
-        Article::findOrFail($request->input('article_id'));
+        $comment = new Comment([
+            'title' => $validated['title'],
+            'content' => $validated['content'],
+            'user' => $validated['user'],
+            'article' => $validated['article']
+        ]);
+
+        User::findOrFail($validated['user']);
+        Article::findOrFail($validated['article']);
 
         $comment->save();
 
-        return response('', 201);
+        return new CommentResource($comment);
     }
 
     /**
