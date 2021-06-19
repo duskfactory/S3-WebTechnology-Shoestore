@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -18,30 +19,26 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        if (!$request->has(['name', 'email', 'password']))
-            return response('', 400);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|unique:App\Models\User,name',
+            'email' => 'required|email|unique:App\Models\User,email',
+            'password' => 'required|alpha_dash'
+        ]);
 
-        $users = User::all();
-        foreach ($users as $user)
-            if ($user->name == $request->input('name') ||
-                $user->email == $request->input('email'))
-                return response(
-                    'User with this name or email already exists', 409)
-                    ->header('Content-Type', 'text/plain');
+        if ($validator->fails())
+            return response()->json(["error" => 'Validation failed.'], 400);
+
+        $validated = $validator->validate();
 
         $user = new User([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'password' => $request->input('password'),
-            'role' => 'user'
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => $validated['password']
         ]);
 
         $user->save();
 
-        return (new UserResource(
-                    User::firstWhere('email', $request->input('email'))))
-                    ->response()
-                    ->setStatusCode(201);
+        return new UserResource($user);
     }
 
     /**
@@ -55,15 +52,6 @@ class UserController extends Controller
         return new UserResource(User::findOrFail($user->id));
     }
 
-    public function login(User $user)
-    {
-        $foundUser = User::where('name', $user->name)->firstOrFail();
-        if ($user->password == $foundUser->password)
-            return new UserResource($foundUser);
-        else
-            return response('', 403);
-    }
-
     /**
      * Update the specified resource in storage.
      *
@@ -74,7 +62,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         if (!$request->has('id'))
-            return response('', 400);
+            return response('You must supply an id.', 400);
 
         $savedUser = User::findOrFail($request->input('id'));
 
@@ -100,7 +88,7 @@ class UserController extends Controller
     {
         $savedUser = User::findOrFail($user->id);
         $savedUser->delete();
-        return response();
+        return response("User succesfully deleted.");
     }
 
     /**
@@ -112,14 +100,13 @@ class UserController extends Controller
     public function makePurchase(Request $request) 
     {
         if (!$request->has(['user_id', 'article_id']))
-            return response('', 400);
+            return response('Need user and article id.', 400);
 
         $user = User::findOrFail($request->input('user_id'));
         Article::findOrFail($request->input('article_id'));
 
         $user->purchases()->attach($request->input('article_id'));
-        $user->wishlist()->detach($request->input('article_id'));
         
-        return response('', 201);
+        return response('Purchase succesfully registered.', 201);
     }
 }

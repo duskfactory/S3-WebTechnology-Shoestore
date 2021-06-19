@@ -8,6 +8,7 @@ use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Validator;
 
 class CommentController extends Controller
 {
@@ -19,12 +20,17 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'title' => 'required|string',
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|string|max:255',
             'content' => 'required|string',
             'user' => 'required|integer',
             'article' => 'required|integer'
         ]);
+
+        if ($validator->fails())
+            return response()->json(["error" => 'Validation failed.'], 400);
+
+        $validated = $validator->validate();
 
         $comment = new Comment([
             'title' => $validated['title'],
@@ -51,7 +57,7 @@ class CommentController extends Controller
     public function update(Request $request, Comment $comment)
     {
         if (!$request->has('id'))
-            return response('', 400);
+            return response()->json(["error" => "Request must have comment id."], 400);
 
         $savedComment = Comment::findOrFail($request->input('id'));
 
@@ -75,6 +81,6 @@ class CommentController extends Controller
     {
         $savedComment = Comment::findOrFail($comment->id);
         $savedComment->delete();
-        return response();
+        return response("Comment succesfully deleted");
     }
 }
