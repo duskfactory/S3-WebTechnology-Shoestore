@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,7 @@ Route::apiResource('comments', CommentController::class)->except([
 
 Route::apiResource('users', UserController::class)->except(['index']);
 
-Route::put('/makePurchase', [UserController::class, 'makePurchase']);
+Route::post('/makePurchase', [UserController::class, 'makePurchase']);
 
 Route::get('/test', function() {
     return "ok";

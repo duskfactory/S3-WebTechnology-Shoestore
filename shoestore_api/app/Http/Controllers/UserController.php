@@ -6,7 +6,6 @@ use App\Http\Resources\User as UserResource;
 use App\Models\Article;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -47,9 +46,9 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
-        return new UserResource(User::findOrFail($user->id));
+        return new UserResource(User::findOrFail($id));
     }
 
     /**
@@ -59,19 +58,26 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        if (!$request->has('id'))
-            return response('You must supply an id.', 400);
+        $validator = Validator::make($request->all(), [
+            'name' => 'nullable|string|unique:App\Models\User,name',
+            'email' => 'nullable|email|unique:App\Models\User,email',
+            'password' => 'nullable|alpha_dash'
+        ]);
 
-        $savedUser = User::findOrFail($request->input('id'));
+        if ($validator->fails())
+            return response()->json(["error" => 'Validation failed.'], 400);
 
-        if ($user->name != '')
-            $savedUser->name = $user->name;
-        if ($user->password != '')
-            $savedUser->password = $user->password;
-        if ($user->email != '')
-            $savedUser->email = $user->email;
+        $validated = $validator->validate();
+        $savedUser = User::findOrFail($id);
+
+        if ($validated['name'] != null)
+            $savedUser->name = $validated['name'];
+        if ($validated['password'] != null)
+            $savedUser->password = $validated['password'];
+        if ($validated['email'] != null)
+            $savedUser->email = $validated['email'];
 
         $savedUser->save();
 
@@ -84,9 +90,9 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        $savedUser = User::findOrFail($user->id);
+        $savedUser = User::findOrFail($id);
         $savedUser->delete();
         return response("User succesfully deleted.");
     }
@@ -99,13 +105,13 @@ class UserController extends Controller
      */
     public function makePurchase(Request $request) 
     {
-        if (!$request->has(['user_id', 'article_id']))
+        if (!$request->has(['user', 'article']))
             return response('Need user and article id.', 400);
 
-        $user = User::findOrFail($request->input('user_id'));
-        Article::findOrFail($request->input('article_id'));
+        $user = User::findOrFail($request->input('user'));
+        Article::findOrFail($request->input('article'));
 
-        $user->purchases()->attach($request->input('article_id'));
+        $user->purchases()->attach($request->input('article'));
         
         return response('Purchase succesfully registered.', 201);
     }

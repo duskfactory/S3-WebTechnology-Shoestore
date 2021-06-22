@@ -7,7 +7,6 @@ use App\Models\Article;
 use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 
 class CommentController extends Controller
@@ -22,9 +21,10 @@ class CommentController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
-            'content' => 'required|string',
+            'body' => 'required|string',
             'user' => 'required|integer',
-            'article' => 'required|integer'
+            'article' => 'required|integer',
+            'image' => 'nullable|alpha_dash|unique:App\Models\Comment,image'
         ]);
 
         if ($validator->fails())
@@ -34,9 +34,10 @@ class CommentController extends Controller
 
         $comment = new Comment([
             'title' => $validated['title'],
-            'content' => $validated['content'],
+            'body' => $validated['body'],
             'user' => $validated['user'],
-            'article' => $validated['article']
+            'article' => $validated['article'],
+            'image' => $validated['image']
         ]);
 
         User::findOrFail($validated['user']);
@@ -77,9 +78,9 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function destroy($id)
     {
-        $savedComment = Comment::findOrFail($comment->id);
+        $savedComment = Comment::findOrFail($id);
         $savedComment->delete();
         return response("Comment succesfully deleted");
     }

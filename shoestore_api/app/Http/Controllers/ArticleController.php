@@ -4,9 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\Article as ArticleResource;
 use App\Models\Article;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -26,8 +23,8 @@ class ArticleController extends Controller
      * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function show(Article $article)
+    public function show($id)
     {
-        return new ArticleResource(Article::findOrFail($article->id));
+        return new ArticleResource(Article::findOrFail($id));
     }
 }
