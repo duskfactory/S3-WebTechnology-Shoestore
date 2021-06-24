@@ -8,6 +8,7 @@ use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class CommentController extends Controller
 {
@@ -24,7 +25,7 @@ class CommentController extends Controller
             'body' => 'required|string',
             'user' => 'required|integer',
             'article' => 'required|integer',
-            'image' => 'nullable|alpha_dash|unique:App\Models\Comment,image'
+            'image' => 'nullable|image'
         ]);
 
         if ($validator->fails())
@@ -32,16 +33,20 @@ class CommentController extends Controller
 
         $validated = $validator->validate();
 
+        User::findOrFail($validated['user']);
+        Article::findOrFail($validated['article']);
+
+        $path = null;
+        if ($validated['image'] != null)
+            $path = $request->file('image')->store('comments');
+
         $comment = new Comment([
             'title' => $validated['title'],
             'body' => $validated['body'],
-            'user' => $validated['user'],
-            'article' => $validated['article'],
-            'image' => $validated['image']
+            'user_id' => $validated['user'],
+            'article_id' => $validated['article'],
+            'image' => $path
         ]);
-
-        User::findOrFail($validated['user']);
-        Article::findOrFail($validated['article']);
 
         $comment->save();
 
@@ -55,17 +60,30 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, $id)
     {
-        if (!$request->has('id'))
-            return response()->json(["error" => "Request must have comment id."], 400);
+        $validator = Validator::make($request->all(), [
+            'title' => 'nullable|string|max:255',
+            'body' => 'nullable|string',
+            'image' => 'nullable|image'
+        ]);
 
-        $savedComment = Comment::findOrFail($request->input('id'));
+        if ($validator->fails())
+            return response()->json(["error" => 'Validation failed.'], 400);
 
-        if ($comment->title != '')
-            $savedComment->title = $comment->title;
-        if ($comment->content != '')
-            $savedComment->content = $comment->content;
+        $validated = $validator->validate();
+
+        $savedComment = Comment::findOrFail($id);
+
+        if ($validated['title'] != null)
+            $savedComment->title = $validated['title'];
+        if ($validated['body'] != null)
+            $savedComment->body = $validated['body'];
+        if ($validated['image'] != null) {
+            if ($savedComment->image != null)
+                Storage::delete($savedComment->image);
+            $savedComment->image = $request->file('image')->store('comments');
+        }
 
         $savedComment->save();
 
@@ -81,6 +99,8 @@ class CommentController extends Controller
     public function destroy($id)
     {
         $savedComment = Comment::findOrFail($id);
+        if ($savedComment->image != null)
+            Storage::delete($savedComment->image);
         $savedComment->delete();
         return response("Comment succesfully deleted");
     }
