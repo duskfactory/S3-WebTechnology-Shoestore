@@ -24,8 +24,7 @@ class CommentController extends Controller
             'title' => 'required|string|max:255',
             'body' => 'required|string',
             'user' => 'required|integer',
-            'article' => 'required|integer',
-            'image' => 'nullable|image'
+            'article' => 'required|integer'
         ]);
 
         if ($validator->fails())
@@ -36,16 +35,11 @@ class CommentController extends Controller
         User::findOrFail($validated['user']);
         Article::findOrFail($validated['article']);
 
-        $path = null;
-        if ($validated['image'] != null)
-            $path = $request->file('image')->store('comments');
-
         $comment = new Comment([
             'title' => $validated['title'],
             'body' => $validated['body'],
             'user_id' => $validated['user'],
-            'article_id' => $validated['article'],
-            'image' => $path
+            'article_id' => $validated['article']
         ]);
 
         $comment->save();
@@ -64,8 +58,7 @@ class CommentController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'nullable|string|max:255',
-            'body' => 'nullable|string',
-            'image' => 'nullable|image'
+            'body' => 'nullable|string'
         ]);
 
         if ($validator->fails())
@@ -79,11 +72,6 @@ class CommentController extends Controller
             $savedComment->title = $validated['title'];
         if ($validated['body'] != null)
             $savedComment->body = $validated['body'];
-        if ($validated['image'] != null) {
-            if ($savedComment->image != null)
-                Storage::delete($savedComment->image);
-            $savedComment->image = $request->file('image')->store('comments');
-        }
 
         $savedComment->save();
 
@@ -103,5 +91,25 @@ class CommentController extends Controller
             Storage::delete($savedComment->image);
         $savedComment->delete();
         return response("Comment succesfully deleted");
+    }
+
+    public function uploadImage(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'image' => 'required|image'
+        ]);
+
+        if ($validator->fails())
+            return response()->json(["error" => 'Validation failed.'], 400);
+
+        $comment = Comment::findOrFail($id);
+        $path = $request->file('image')->store('comments');
+
+        if ($comment->image != null)
+            Storage::delete($comment->image);
+            
+        $comment->image = $path;
+        $comment->save();
+        return new CommentResource($comment);
     }
 }

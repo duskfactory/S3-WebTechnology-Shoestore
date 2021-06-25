@@ -25,6 +25,8 @@ Route::apiResource('comments', CommentController::class)->except([
     'index', 'show'
 ]);
 
+Route::post('/uploadImage/{id}', [CommentController::class, 'uploadImage']);
+
 Route::apiResource('users', UserController::class)->except(['index']);
 
 Route::post('/makePurchase', [UserController::class, 'makePurchase']);
