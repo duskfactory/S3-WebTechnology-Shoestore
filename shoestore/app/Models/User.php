@@ -11,6 +11,16 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
+
+    public function purchases()
+    {
+        return $this->belongsToMany('App\Models\Article', 'purchases');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -20,6 +30,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
