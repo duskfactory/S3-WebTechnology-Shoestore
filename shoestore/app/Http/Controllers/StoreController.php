@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class StoreController extends Controller
 {
@@ -21,7 +22,7 @@ class StoreController extends Controller
 
     public function checkout(Request $request)
     {
-        return view('checkout', ['basket' => $request->session()->get('basket')]);
+        return view('checkout', ['article' => Article::find($request->session()->get('article'))]);
     }
 
     public function dashboard()
@@ -33,19 +34,24 @@ class StoreController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
-            'body' => 'required|string'
+            'body' => 'required|string',
+            'image' => 'nullable|image'
         ]);
 
         if ($validator->fails())
             return back()->withErrors(['error', 'Comment body or title invalid.']);
 
         $validated = $validator->validate();
+        $path = null;
+        if ($validated['image'] != null)
+            $path = $request->file('image')->store('comments');
 
         Comment::create([
             'title' => $validated['title'],
             'body' => $validated['body'],
             'user_id' => Auth::id(),
-            'article_id' => $id
+            'article_id' => $id,
+            'image' => $path
         ]);
 
         return back()->with('message', 'Comment succesfully posted.');
@@ -54,8 +60,9 @@ class StoreController extends Controller
     public function updateComment(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|string|max:255',
-            'body' => 'required|string'
+            'title' => 'nullable|string|max:255',
+            'body' => 'nullable|string',
+            'image' => 'nullable|image'
         ]);
 
         if ($validator->fails())
@@ -68,6 +75,12 @@ class StoreController extends Controller
             $savedComment->title = $validated['title'];
         if ($validated['body'] != null)
             $savedComment->body = $validated['body'];
+        if ($validated['image'] != null) {
+            $path = $request->file('image')->store('comments');
+            if ($savedComment->image != null)
+                Storage::delete($savedComment->image);
+            $savedComment->image = $path;
+        }
 
         $savedComment->save();
 
