@@ -33,14 +33,8 @@ class StoreController extends Controller
         
     }
 
-    public function postPurchase(Request $request)
+    public function postPurchase($id)
     {
-        if (!$request->has(['user', 'article']))
-            return response('Need user and article id.', 400);
-
-        $user = User::findOrFail($request->input('user'));
-        Article::findOrFail($request->input('article'));
-
-        $user->purchases()->attach($request->input('article'));
+        Auth::user()->purchases()->attach($id);
     }
 }

@@ -14,27 +14,27 @@ use App\Http\Controllers\StoreController;
 |
 */
 
-Route::get('/', [StoreController::class, showArticles]);
+Route::get('/', [StoreController::class, 'showArticles']);
 
-Route::get('article/{id}', [Storecontroller::class, getArticle]);
+Route::get('article/{id}', [Storecontroller::class, 'getArticle']);
 
-Route::get('/checkout', [StoreController::class, checkout])
+Route::get('/checkout', [StoreController::class, 'checkout'])
     ->middleware('auth');
 
-Route::get('/dashboard', [StoreController::class, dashboard])
+Route::get('/dashboard', [StoreController::class, 'dashboard'])
     ->middleware('auth')
     ->name('dashboard');
 
-Route::post('/postPurchase', [StoreController::class, postPurchase])
+Route::post('/postPurchase', [StoreController::class, 'postPurchase'])
     ->middleware('auth');
 
-Route::post('/postComment', [StoreController::class, postComment])
+Route::post('/postComment', [StoreController::class, 'postComment'])
     ->middleware('auth');
 
-Route::put('/updateComment/{id}', [StoreController::class, updateComment])
+Route::put('/updateComment/{id}', [StoreController::class, 'updateComment'])
     ->middleware('auth');
 
-Route::delete('/deleteComment/{id}', [StoreController::class, deleteComment])
+Route::delete('/deleteComment/{id}', [StoreController::class, 'deleteComment'])
     ->middleware('auth');
 
 require __DIR__.'/auth.php';
