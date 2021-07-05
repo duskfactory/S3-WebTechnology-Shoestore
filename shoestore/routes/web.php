@@ -14,7 +14,8 @@ use App\Http\Controllers\StoreController;
 |
 */
 
-Route::get('/', [StoreController::class, 'showArticles']);
+Route::get('/', [StoreController::class, 'showArticles'])
+    ->name('welcome');
 
 Route::get('article/{id}', [Storecontroller::class, 'getArticle']);
 

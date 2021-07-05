@@ -17,12 +17,16 @@ class StoreController extends Controller
 
     public function getArticle($id)
     {
-        return view('article', ['article' => Article::findOrFail($id)]);
+        return view('article', ['article' => Article::find($id)]);
     }
 
     public function checkout(Request $request)
     {
-        return view('checkout', ['article' => Article::find($request->session()->get('article'))]);
+        $basket = [];
+        if ($request->session()->has('basket'))
+            foreach ($request->session()->get('basket') as $id)
+                array_push($basket, Article::find($id));
+        return view('checkout', ['basket' => $basket]);
     }
 
     public function dashboard()
@@ -66,7 +70,7 @@ class StoreController extends Controller
         ]);
 
         if ($validator->fails())
-            return back()->withErrors(['error', 'Comment body or title invalid.']);
+            return back()->withErrors(['error', 'Comment invalid.']);
 
         $validated = $validator->validate();
         $savedComment = Comment::find($id);
@@ -98,7 +102,9 @@ class StoreController extends Controller
 
     public function postPurchase($id)
     {
-        Auth::user()->purchases()->attach($id);
+        if ($request->session()->has('basket'))
+            foreach ($request->session()->get('basket') as $id)
+                Auth::user()->purchases()->attach($id);
         return view('dashboard', [
             'user' => Auth::user(),
             'message' => 'Purchase succesfully completed.'
