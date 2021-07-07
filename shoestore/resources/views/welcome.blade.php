@@ -4,9 +4,10 @@
 @section('main')
 <div id="vue">
     <article v-for="article in articles">
-        <img :src="`https://shoestore.local/${article.image}`" alt="@{{ article.name }}" />
-        <p>@{{ article.name }}</p>
-        <p>@{{ article.price }}</p>
+        <img :src="image(article.image)" :alt="article.name" />
+        <p>@{{ article->name }}</p>
+        <p>@{{ article->price }}</p>
+        <p><a :href="articleRoute(article.id)"></a></p>
     </article>
 </div>
 {{ $articles->links() }}
@@ -19,6 +20,14 @@
             return {
                 articles: @json($articles)
             };
+        },
+        methods: {
+            image(url) {
+                return `https://shoestore.local/articles/${url}.webp`;
+            },
+            articleRoute(id) {
+                return `https://shoestore.local/article/${id}`;
+            }
         }
     };
     Vue.createApp(panel).mount('#vue');

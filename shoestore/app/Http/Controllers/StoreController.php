@@ -17,7 +17,10 @@ class StoreController extends Controller
 
     public function getArticle($id)
     {
-        return view('article', ['article' => Article::find($id)]);
+        return view('article', [
+            'article' => Article::find($id),
+            'loggedIn' => Auth::check()
+        ]);
     }
 
     public function checkout(Request $request)
@@ -100,7 +103,7 @@ class StoreController extends Controller
         return back()->with('message', 'Comment succesfully deleted.');
     }
 
-    public function postPurchase($id)
+    public function postPurchase(Request $request)
     {
         if ($request->session()->has('basket'))
             foreach ($request->session()->get('basket') as $id)
@@ -109,5 +112,11 @@ class StoreController extends Controller
             'user' => Auth::user(),
             'message' => 'Purchase succesfully completed.'
         ]);
+    }
+
+    public function addToBasket(Request $request, $id)
+    {
+        $request->session()->push('basket', $id);
+        return redirect()->route('checkout');
     }
 }
