@@ -1,2 +1,3 @@
-import 'bootstrap';
-import 'alpinejs';
+require('bootstrap');
+require('alpinejs');
+require('vue');

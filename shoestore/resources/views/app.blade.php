@@ -15,6 +15,7 @@
         <ul>
             <li><a href="{{ route('welcome') }}">Home</a></li>
             @auth
+                <li><a href="{{ route('checkout') }}"><img src="{{ asset('img/basket.png') }}" alt="Basket" /></a></li>
                 <li><a href="{{ route('dashboard') }}">Profile</a></li>
                 <li><a href="{{ route('logout') }}">Logout</a></li>
             @else

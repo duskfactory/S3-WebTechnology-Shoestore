@@ -20,7 +20,8 @@ Route::get('/', [StoreController::class, 'showArticles'])
 Route::get('article/{id}', [Storecontroller::class, 'getArticle']);
 
 Route::get('/checkout', [StoreController::class, 'checkout'])
-    ->middleware('auth');
+    ->middleware('auth')
+    ->name('checkout');
 
 Route::get('/dashboard', [StoreController::class, 'dashboard'])
     ->middleware('auth')
