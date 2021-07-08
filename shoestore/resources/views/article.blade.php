@@ -4,7 +4,7 @@
 @section('main')
 <div id="vue">
     <section>
-        <img src="{{ asset('articles/' + $article->image + '.webp') }}" />
+        <img src="{{ asset('articles/' + $article->image) }}" />
         <h1>{{ $article->name }}</h1>
         <p>{{ $article->price }}</p>
         <a href="{{ route('addToBasket', ['id' => $article->id]) }}"></a>

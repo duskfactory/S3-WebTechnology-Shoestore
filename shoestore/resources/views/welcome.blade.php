@@ -5,8 +5,8 @@
 <div id="vue">
     <article v-for="article in articles">
         <img :src="image(article.image)" :alt="article.name" />
-        <p>@{{ article->name }}</p>
-        <p>@{{ article->price }}</p>
+        <p>@{{ article.name }}</p>
+        <p>@{{ article.price }}</p>
         <p><a :href="articleRoute(article.id)"></a></p>
     </article>
 </div>
@@ -23,7 +23,7 @@
         },
         methods: {
             image(url) {
-                return `https://shoestore.local/articles/${url}.webp`;
+                return `https://shoestore.local/articles/${url}`;
             },
             articleRoute(id) {
                 return `https://shoestore.local/article/${id}`;
