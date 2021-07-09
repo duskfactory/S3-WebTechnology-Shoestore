@@ -6,6 +6,7 @@
     <meta name="author" content="Xander Storme" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/common.css') }}" />
     @yield('stylesheets')
 </head>
 <body>
@@ -13,7 +14,7 @@
     <img src="{{ asset('img/elegance.png') }}" alt="Elegance Logo" />
     <nav>
         <ul>
-            <li><a href="{{ route('welcome') }}">Home</a></li>
+            <li><a href="{{ route('welcome') }}" class="active">Home</a></li>
             @auth
                 <li><a href="{{ route('checkout') }}"><img src="{{ asset('img/basket.png') }}" alt="Basket" /></a></li>
                 <li><a href="{{ route('dashboard') }}">Profile</a></li>
@@ -25,7 +26,6 @@
         </ul>
     </nav>
 </header>
-<hr />
 <main>
     @yield('main')
 </main>
@@ -33,7 +33,7 @@
 <footer>
     <p>&#169;2021 Elegance - Created by Xander Storme</p>
 </footer>
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/vue.js') }}"></script>
 @yield('scripts')
 </body>
 </html>

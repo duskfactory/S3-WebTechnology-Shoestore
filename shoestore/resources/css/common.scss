@@ -1,0 +1,46 @@
+%center-element {
+    margin: auto;
+    width: 50%;
+}
+
+footer {
+    margin: 0.5em 0;
+    p {
+        @extend %center-element;
+        text-align: center;
+    }
+}
+
+header {
+    margin-bottom: 1em;
+    img {
+        @extend %center-element;
+        height: 30%;
+        width: 30%;
+    }
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        li {
+            float: left;
+            border-right: 1px solid #bbb;
+            a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 1em;
+                text-decoration: none;
+                &:hover:not(.active) {
+                    background-color: #111;
+                }
+            }
+        }
+    }
+}
+
+.active {
+    background-color: #04aa6d;
+}

@@ -1,5 +1,8 @@
 @extends('app')
 @section('title', 'Home')
+@section('stylesheets')
+<link rel="stylesheet" href="{{ asset('css/welcome.css') }}" />
+@endsection
 
 @section('main')
 <div id="vue">
@@ -15,21 +18,19 @@
 
 @section('scripts')
 <script>
-    const panel = {
-        data() {
-            return {
-                articles: @json($articles)
-            };
+    const panel = new Vue({
+        el: '#vue',
+        data: {
+            articles: @json($articles).data
         },
         methods: {
-            image(url) {
-                return `https://shoestore.local/articles/${url}`;
+            image: function (url) {
+                return `https://shoestore.local/${url}`;
             },
-            articleRoute(id) {
+            articleRoute: function (id) {
                 return `https://shoestore.local/article/${id}`;
             }
         }
-    };
-    Vue.createApp(panel).mount('#vue');
+    });
 </script>
 @endsection
