@@ -32,7 +32,6 @@
 <footer>
     <p>&#169;2021 Elegance - Created by Xander Storme</p>
 </footer>
-<script src="{{ asset('js/vue.js') }}"></script>
 @yield('scripts')
 </body>
 </html>

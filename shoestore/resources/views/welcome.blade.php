@@ -6,24 +6,13 @@
 @endsection
 
 @section('main')
-<div id="vue">
-    <article v-for="article in articles">
-        <img src="{{ asset('') }}@{{ article.image }}" :alt="article.name" />
-        <p>@{{ article.name }}</p>
-        <p>@{{ article.price }}</p>
-        <p><a href="{{ route('article', '') }}@{{ article.id }}"></a></p>
+@foreach ($articles as $article)
+    <article>
+        <img src="{{ asset($article->image) }}" alt="$article->name" />
+        <p>{{ $article->name }}</p>
+        <p>{{ $article->price }}</p>
+        <a href="{{ route('article', ['id' => $article->id]) }}"><span></span></a>
     </article>
-</div>
+@endforeach
 {{ $articles->links() }}
-@endsection
-
-@section('scripts')
-<script>
-    const panel = new Vue({
-        el: '#vue',
-        data: {
-            articles: @json($articles).data
-        }
-    });
-</script>
 @endsection

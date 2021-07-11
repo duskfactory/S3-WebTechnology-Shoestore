@@ -17,19 +17,31 @@ class StoreController extends Controller
 
     public function getArticle($id)
     {
+        $userid = -1;
+        if (Auth::check())
+            $userid = Auth::id();
         return view('article', [
             'article' => Article::find($id),
-            'loggedIn' => Auth::check()
+            'id' => $userid
         ]);
     }
 
     public function checkout(Request $request)
     {
         $basket = [];
+        $totalSum = 0;
+
         if ($request->session()->has('basket'))
             foreach ($request->session()->get('basket') as $id)
                 array_push($basket, Article::find($id));
-        return view('checkout', ['basket' => $basket]);
+
+        foreach ($basket as $article)
+            $totalSum += $article->price;
+
+        return view('checkout', [
+            'basket' => $basket,
+            'totalSum' => $totalSum
+        ]);
     }
 
     public function dashboard()
@@ -117,6 +129,15 @@ class StoreController extends Controller
     public function addToBasket(Request $request, $id)
     {
         $request->session()->push('basket', $id);
+        return redirect()->route('checkout');
+    }
+
+    public function removeFromBasket(Request $request, $id)
+    {
+        $articles = $request->session()->pull('basket');
+        if (($key = array_search($id, $articles)) !== false) 
+            unset($articles[$key]);
+        session()->put('basket', $articles);
         return redirect()->route('checkout');
     }
 }

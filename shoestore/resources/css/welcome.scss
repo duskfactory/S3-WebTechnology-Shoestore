@@ -1,5 +1,21 @@
-#vue {
+main {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-auto-rows: 15em;
+    grid-auto-rows: 5em;
+    article {
+        position: relative;
+        max-height: 10em;
+        background-color: aqua;;
+        img {
+            height: 50%;
+        }
+        span {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+    }
 }
