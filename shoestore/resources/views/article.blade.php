@@ -26,7 +26,7 @@
     </form>
     @foreach ($article->comments as $comment)
         <article>
-            @if($comment->user_id == $id)
+            @if($comment->user_id === $id)
                 <a href="{{ route('updateComment', ['id' => $comment->id]) }}">Edit</a>
                 <a href="{{ route('deleteComment', ['id' => $comment->id]) }}">Delete</a>
             @endif

@@ -1,15 +1,62 @@
+header img, footer p {
+  margin: auto;
+  width: 50%;
+}
+
+footer {
+  margin: 0.5em 0;
+}
+footer p {
+  text-align: center;
+}
+
+header {
+  margin-bottom: 1em;
+}
+header img {
+  height: 30%;
+  width: 30%;
+}
+header ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+header ul li {
+  float: left;
+  border-right: 1px solid #bbb;
+}
+header ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 1em;
+  text-decoration: none;
+}
+header ul li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04aa6d;
+}
+
 main {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-auto-rows: 5em;
+  grid-auto-rows: 10em;
 }
 main article {
   position: relative;
   max-height: 10em;
-  background-color: aqua;
+  background-color: SkyBlue;
+  padding: 1em;
+  margin: 0.5em;
 }
 main article img {
-  height: 50%;
+  height: 60%;
 }
 main article span {
   position: absolute;

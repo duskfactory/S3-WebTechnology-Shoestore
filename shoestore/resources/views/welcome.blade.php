@@ -10,7 +10,7 @@
     <article>
         <img src="{{ asset($article->image) }}" alt="$article->name" />
         <p>{{ $article->name }}</p>
-        <p>{{ $article->price }}</p>
+        <p>€{{ $article->price }}</p>
         <a href="{{ route('article', ['id' => $article->id]) }}"><span></span></a>
     </article>
 @endforeach
