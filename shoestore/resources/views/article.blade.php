@@ -1,14 +1,18 @@
 @extends('app')
 @section('title', 'Article')
 
+@section('stylesheets')
+<link rel="stylesheet" href="{{ asset('css/article.css') }}" />
+@endsection
+
 @section('main')
-<section>
+<section class="description">
     <img src="{{ asset($article->image) }}" alt="{{ $article->name }}" />
     <h1>{{ $article->name }}</h1>
-    <p>{{ $article->price }}</p>
+    <p>€{{ $article->price }}</p>
     <a href="{{ route('addToBasket', ['id' => $article->id]) }}">Add To Basket</a>
 </section>
-<section>
+<section class="comments">
     <form action="{{ route('postComment') }}" method="post" enctype="multipart/form-data">
         <div>
             <label for="title">Title: </label><br />
@@ -27,7 +31,6 @@
     @foreach ($article->comments as $comment)
         <article>
             @if($comment->user_id === $id)
-                <a href="{{ route('updateComment', ['id' => $comment->id]) }}">Edit</a>
                 <a href="{{ route('deleteComment', ['id' => $comment->id]) }}">Delete</a>
             @endif
             <h1>{{ $comment->title }}</h1>

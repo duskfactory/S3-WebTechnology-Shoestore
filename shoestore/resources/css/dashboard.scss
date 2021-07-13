@@ -1,0 +1,12 @@
+@use 'common';
+
+.tabcontent {
+    display: none;
+}
+
+.message {
+    background-color: CadetBlue;
+    padding: 1em;
+    margin: 0.5em;
+    width: 50%;
+}

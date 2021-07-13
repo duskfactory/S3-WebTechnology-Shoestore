@@ -1,0 +1,23 @@
+@use 'common';
+
+.description {
+    font-size: 1.2em;
+    img {
+        max-height: 15em;
+        float: left;
+        margin: 0 0.5em 0.5em 0.5em;
+    }
+    a {
+        color: Black;
+        background-color: PaleGreen;
+        border: solid SlateGray;
+        padding: 0.4em;
+    }
+}
+
+.comments {
+    clear: both;
+    form div {
+        margin: 0.5em 0;
+    }
+}

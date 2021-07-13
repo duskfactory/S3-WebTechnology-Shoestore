@@ -3,6 +3,13 @@
     width: 50%;
 }
 
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    a {
+        text-decoration: none;
+    }
+}
+
 footer {
     margin: 0.5em 0;
     p {
@@ -32,7 +39,6 @@ header {
                 color: white;
                 text-align: center;
                 padding: 1em;
-                text-decoration: none;
                 &:hover:not(.active) {
                     background-color: #111;
                 }

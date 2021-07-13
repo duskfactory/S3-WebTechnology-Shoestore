@@ -28,7 +28,7 @@ Route::get('/dashboard', [StoreController::class, 'dashboard'])
     ->middleware('auth')
     ->name('dashboard');
 
-Route::post('/postPurchase', [StoreController::class, 'postPurchase'])
+Route::get('/postPurchase', [StoreController::class, 'postPurchase'])
     ->middleware('auth')
     ->name('postPurchase');
 
@@ -36,16 +36,16 @@ Route::post('/postComment', [StoreController::class, 'postComment'])
     ->middleware('auth')
     ->name('postComment');
 
-Route::put('/updateComment/{id}', [StoreController::class, 'updateComment'])
-    ->middleware('auth')
-    ->name('updateComment');
-
-Route::delete('/deleteComment/{id}', [StoreController::class, 'deleteComment'])
+Route::get('/deleteComment/{id}', [StoreController::class, 'deleteComment'])
     ->middleware('auth')
     ->name('deleteComment');
 
 Route::get('/addToBasket/{id}', [StoreController::class, 'addToBasket'])
     ->middleware('auth')
     ->name('addToBasket');
+
+Route::get('/removeFromBasket/{id}', [StoreController::class, 'removeFromBasket'])
+    ->middleware('auth')
+    ->name('removeFromBasket');
 
 require __DIR__.'/auth.php';

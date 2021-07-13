@@ -76,36 +76,6 @@ class StoreController extends Controller
         return back()->with('message', 'Comment succesfully posted.');
     }
 
-    public function updateComment(Request $request, $id)
-    {
-        $validator = Validator::make($request->all(), [
-            'title' => 'nullable|string|max:255',
-            'body' => 'nullable|string',
-            'image' => 'nullable|image'
-        ]);
-
-        if ($validator->fails())
-            return back()->withErrors(['error', 'Comment invalid.']);
-
-        $validated = $validator->validate();
-        $savedComment = Comment::find($id);
-
-        if ($validated['title'] != null)
-            $savedComment->title = $validated['title'];
-        if ($validated['body'] != null)
-            $savedComment->body = $validated['body'];
-        if ($validated['image'] != null) {
-            $path = $request->file('image')->store('comments');
-            if ($savedComment->image != null)
-                Storage::delete($savedComment->image);
-            $savedComment->image = $path;
-        }
-
-        $savedComment->save();
-
-        return back()->with('message', 'Comment succesfully updated.');
-    }
-
     public function deleteComment($id)
     {
         $savedComment = Comment::find($id);
@@ -117,12 +87,17 @@ class StoreController extends Controller
 
     public function postPurchase(Request $request)
     {
-        if ($request->session()->has('basket'))
+        $message = "";
+        if ($request->session()->has('basket')) {
             foreach ($request->session()->get('basket') as $id)
                 Auth::user()->purchases()->attach($id);
+            $message = "Purchase succesfully completed.";
+        } else
+            $message = "Basket is empty";
+            
         return view('dashboard', [
             'user' => Auth::user(),
-            'message' => 'Purchase succesfully completed.'
+            'message' => $message
         ]);
     }
 

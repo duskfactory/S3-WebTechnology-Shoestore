@@ -1,5 +1,8 @@
 @extends('app')
 @section('title', 'Checkout')
+@section('stylesheets')
+<link rel="stylesheet" href="{{ asset('css/checkout.css') }}" />
+@endsection
 
 @section('main')
 <h1>Checkout</h1>

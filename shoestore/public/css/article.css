@@ -49,28 +49,26 @@ header ul li a:hover:not(.active) {
   background-color: #04aa6d;
 }
 
-main {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-auto-rows: 10em;
+.description {
+  font-size: 1.2em;
 }
-main article {
-  position: relative;
-  max-height: 10em;
-  background-color: SkyBlue;
-  padding: 1em;
-  margin: 0.5em;
+.description img {
+  max-height: 15em;
+  float: left;
+  margin: 0 0.5em 0.5em 0.5em;
 }
-main article img {
-  height: 60%;
-}
-main article span {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1;
+.description a {
+  color: Black;
+  background-color: PaleGreen;
+  border: solid SlateGray;
+  padding: 0.4em;
 }
 
-/*# sourceMappingURL=welcome.css.map */
+.comments {
+  clear: both;
+}
+.comments form div {
+  margin: 0.5em 0;
+}
+
+/*# sourceMappingURL=article.css.map */
