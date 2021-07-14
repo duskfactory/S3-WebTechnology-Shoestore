@@ -7,6 +7,7 @@ use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class StoreController extends Controller
 {
@@ -49,31 +50,32 @@ class StoreController extends Controller
         return view('dashboard', ['user' => Auth::user()]);
     }
 
-    public function postComment(Request $request, $id)
+    public function postComment(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'body' => 'required|string',
-            'image' => 'nullable|image'
+            'image' => 'nullable|image',
+            'articleId' => 'required'
         ]);
 
         if ($validator->fails())
-            return back()->withErrors(['error', 'Comment body or title invalid.']);
+            return redirect("/article/{$request->input('articleId')}");
 
         $validated = $validator->validate();
         $path = null;
-        if ($validated['image'] != null)
+        if (array_key_exists('image', $validated))
             $path = $request->file('image')->store('comments');
 
         Comment::create([
             'title' => $validated['title'],
             'body' => $validated['body'],
             'user_id' => Auth::id(),
-            'article_id' => $id,
+            'article_id' => $validated['articleId'],
             'image' => $path
         ]);
 
-        return back()->with('message', 'Comment succesfully posted.');
+        return redirect("/article/{$request->input('articleId')}");
     }
 
     public function deleteComment($id)
@@ -91,6 +93,7 @@ class StoreController extends Controller
         if ($request->session()->has('basket')) {
             foreach ($request->session()->get('basket') as $id)
                 Auth::user()->purchases()->attach($id);
+            $request->session()->forget('basket');
             $message = "Purchase succesfully completed.";
         } else
             $message = "Basket is empty";

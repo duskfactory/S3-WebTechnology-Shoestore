@@ -14,6 +14,7 @@
 </section>
 <section class="comments">
     <form action="{{ route('postComment') }}" method="post" enctype="multipart/form-data">
+        @csrf
         <div>
             <label for="title">Title: </label><br />
             <input id="title" name="title" />
@@ -26,6 +27,7 @@
             <label for="image">Photo (optional): </label><br/>
             <input type="file" id="image" name="image" accept="image/*" />
         </div>
+        <input type="hidden" name="articleId" value="{{ $article->id }}" />
         <input type="submit" value="Post Comment" />
     </form>
     @foreach ($article->comments as $comment)

@@ -12,8 +12,8 @@
     @foreach ($basket as $article)
         <article>
             <img src="{{ asset($article->image) }}" alt="{{ $article->name }}" />
-            <p>{{ $article->name }}</p>
-            <p>{{ $article->price }}</p>
+            <p class="title">{{ $article->name }}</p>
+            <p>€{{ $article->price }}</p>
             <a href="{{ route('removeFromBasket', ['id' => $article->id]) }}">Remove</a>
         </article>
     @endforeach

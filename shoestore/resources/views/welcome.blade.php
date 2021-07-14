@@ -29,7 +29,7 @@
 
     function drop(ev) {
         ev.preventDefault();
-        window.location.replace("https://shoestore.local/addToBasket/" + ev.dataTransfer.getData("id"));
+        window.location.replace(`https://shoestore.local/addToBasket/${ev.dataTransfer.getData("id")}`);
     }
 </script>
 @endsection
