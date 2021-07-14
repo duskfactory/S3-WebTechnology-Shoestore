@@ -32,14 +32,14 @@
     </form>
     @foreach ($article->comments as $comment)
         <article>
-            @if($comment->user_id === $id)
-                <a href="{{ route('deleteComment', ['id' => $comment->id]) }}">Delete</a>
-            @endif
-            <h1>{{ $comment->title }}</h1>
-            <p>{{ $comment->body }}</p>
             @if ($comment->image != null)
                 <img src="{{ asset($comment->image) }}" alt="{{ $comment->title }}" />
             @endif
+            @if($comment->user_id === $id)
+                <p class="deleteComment"><a href="{{ route('deleteComment', ['id' => $comment->id]) }}">Delete</a></p>
+            @endif
+            <h1 class="title">{{ $comment->title }}</h1>
+            <p>{{ $comment->body }}</p>
         </article>
     @endforeach
 </section>

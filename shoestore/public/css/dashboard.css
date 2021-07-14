@@ -1,6 +1,23 @@
-header img, footer p {
-  margin: auto;
-  width: 50%;
+.tabcontent article {
+  background-color: CornFlowerBlue;
+  border: 0.5em solid DarkSlateBlue;
+  min-height: 9em;
+  max-height: 13em;
+  margin: 0.5em 0;
+}
+.tabcontent article img {
+  margin: 0.5em;
+  height: 8em;
+  float: left;
+}
+.tabcontent article .title {
+  font-weight: bold;
+}
+
+.deleteComment a {
+  color: Black;
+  background-color: DodgerBlue;
+  border: solid DarkSlateBlue;
 }
 
 body {
@@ -14,6 +31,8 @@ footer {
   margin: 0.5em 0;
 }
 footer p {
+  margin: auto;
+  height: 50%;
   text-align: center;
 }
 
@@ -21,6 +40,7 @@ header {
   margin-bottom: 1em;
 }
 header img {
+  margin: auto;
   height: 30%;
   width: 30%;
 }
@@ -52,7 +72,9 @@ header ul li a:hover:not(.active) {
 .tabcontent {
   display: none;
 }
-
+.deleteComment {
+  margin: 0.5em 0 0 0.5em;
+}
 .message {
   background-color: CadetBlue;
   padding: 1em;

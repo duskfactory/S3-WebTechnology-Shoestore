@@ -14,16 +14,16 @@
         <button class="tablinks" onclick="openTab(event, 'comments')" id="default">Comments</button>
         <button class="tablinks" onclick="openTab(event, 'purchases')">Purchases</button>
     </div>
+    <hr />
     <div id="comments" class="tabcontent">
         @foreach($user->comments as $comment)
             <article>
-                <a href="{{ route('updateComment', ['id' => $comment->id]) }}">Edit</a>
-                <a href="{{ route('deleteComment', ['id' => $comment->id]) }}">Delete</a>
-                <h1>{{ $comment->title }}</h1>
-                <p>{{ $comment->body }}</p>
                 @if ($comment->image != null)
                     <img src="{{ asset($comment->image) }}" />
                 @endif
+                <p class="deleteComment"><a href="{{ route('deleteComment', ['id' => $comment->id]) }}">Delete</a></p>
+                <h1>{{ $comment->title }}</h1>
+                <p>{{ $comment->body }}</p>
             </article>
         @endforeach
     </div>
@@ -31,8 +31,8 @@
         @foreach($user->purchases as $item)
             <article>
                 <img src="{{ asset($item->image) }}" alt="$item->name" />
-                <p>{{ $item->name }}</p>
-                <p>{{ $item->price }}</p>
+                <h1>{{ $item->name }}</h1>
+                <p>€{{ $item->price }}</p>
             </article>
         @endforeach
     </div>

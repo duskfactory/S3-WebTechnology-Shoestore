@@ -1,29 +1,14 @@
 @use 'common';
 
 article {
-    background-color: CornFlowerBlue;
-    border: 0.5em solid DarkSlateBlue;
-    height: 9em;
-    margin: 0.5em 0;
-    img {
-        margin: 0.5em;
-        height: 8em;
-        float: left;
-    }
-    .title {
-        font-weight: bold;
-    }
+    @extend %list-item;
     a {
-        color: Black;
-        background-color: DodgerBlue;
-        border: solid DarkSlateBlue;
+        @extend %button-color-1;
         padding: 0.4em;
     }
 }
 
 p a {
-    color: Black;
-    background-color: PaleGreen;
-    border: solid SlateGray;
+    @extend %button-color-2;
     padding: 0.4em;
 }

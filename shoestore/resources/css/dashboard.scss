@@ -2,6 +2,16 @@
 
 .tabcontent {
     display: none;
+    article {
+        @extend %list-item;
+    }
+}
+
+.deleteComment {
+    margin: common.$margin-link;
+    a {
+        @extend %button-color-1;
+    }
 }
 
 .message {

@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StoreController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\ViewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,37 +16,37 @@ use App\Http\Controllers\StoreController;
 |
 */
 
-Route::get('/', [StoreController::class, 'showArticles'])
+Route::get('/', [ViewController::class, 'showArticles'])
     ->name('welcome');
 
-Route::get('article/{id}', [Storecontroller::class, 'getArticle'])
+Route::get('article/{id}', [Viewcontroller::class, 'getArticle'])
     ->name('article');
 
-Route::get('/checkout', [StoreController::class, 'checkout'])
+Route::get('/checkout', [ViewController::class, 'checkout'])
     ->middleware('auth')
     ->name('checkout');
 
-Route::get('/dashboard', [StoreController::class, 'dashboard'])
+Route::get('/dashboard', [ViewController::class, 'dashboard'])
     ->middleware('auth')
     ->name('dashboard');
 
-Route::get('/postPurchase', [StoreController::class, 'postPurchase'])
+Route::get('/postPurchase', [PurchaseController::class, 'postPurchase'])
     ->middleware('auth')
     ->name('postPurchase');
 
-Route::post('/postComment', [StoreController::class, 'postComment'])
+Route::post('/postComment', [CommentController::class, 'postComment'])
     ->middleware('auth')
     ->name('postComment');
 
-Route::get('/deleteComment/{id}', [StoreController::class, 'deleteComment'])
+Route::get('/deleteComment/{id}', [CommentController::class, 'deleteComment'])
     ->middleware('auth')
     ->name('deleteComment');
 
-Route::get('/addToBasket/{id}', [StoreController::class, 'addToBasket'])
+Route::get('/addToBasket/{id}', [PurchaseController::class, 'addToBasket'])
     ->middleware('auth')
     ->name('addToBasket');
 
-Route::get('/removeFromBasket/{id}', [StoreController::class, 'removeFromBasket'])
+Route::get('/removeFromBasket/{id}', [PurchaseController::class, 'removeFromBasket'])
     ->middleware('auth')
     ->name('removeFromBasket');
 

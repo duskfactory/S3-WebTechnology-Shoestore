@@ -1,6 +1,31 @@
-%center-element {
-    margin: auto;
-    width: 50%;
+$margin-link: 0.5em 0 0 0.5em;
+
+%list-item {
+    background-color: CornFlowerBlue;
+    border: 0.5em solid DarkSlateBlue;
+    min-height: 9em;
+    max-height: 13em;
+    margin: 0.5em 0;
+    img {
+        margin: 0.5em;
+        height: 8em;
+        float: left;
+    }
+    .title {
+        font-weight: bold;
+    }
+}
+
+%button-color-1 {
+    color: Black;
+    background-color: DodgerBlue;
+    border: solid DarkSlateBlue;
+}
+
+%button-color-2 {
+    color: Black;
+    background-color: PaleGreen;
+    border: solid SlateGray;
 }
 
 body {
@@ -13,7 +38,8 @@ body {
 footer {
     margin: 0.5em 0;
     p {
-        @extend %center-element;
+        margin: auto;
+        height: 50%;
         text-align: center;
     }
 }
@@ -21,7 +47,7 @@ footer {
 header {
     margin-bottom: 1em;
     img {
-        @extend %center-element;
+        margin: auto;
         height: 30%;
         width: 30%;
     }

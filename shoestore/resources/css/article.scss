@@ -8,9 +8,7 @@
         margin: 0 0.5em 0.5em 0.5em;
     }
     a {
-        color: Black;
-        background-color: PaleGreen;
-        border: solid SlateGray;
+        @extend %button-color-2;
         padding: 0.4em;
     }
 }
@@ -19,5 +17,14 @@
     clear: both;
     form div {
         margin: 0.5em 0;
+    }
+    article {
+        @extend %list-item;
+        .deleteComment {
+            margin: common.$margin-link;
+            a {
+                @extend %button-color-1;
+            }
+        }
     }
 }

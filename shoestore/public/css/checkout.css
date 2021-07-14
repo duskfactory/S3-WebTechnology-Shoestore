@@ -1,6 +1,29 @@
-header img, footer p {
-  margin: auto;
-  width: 50%;
+article {
+  background-color: CornFlowerBlue;
+  border: 0.5em solid DarkSlateBlue;
+  min-height: 9em;
+  max-height: 13em;
+  margin: 0.5em 0;
+}
+article img {
+  margin: 0.5em;
+  height: 8em;
+  float: left;
+}
+article .title {
+  font-weight: bold;
+}
+
+article a {
+  color: Black;
+  background-color: DodgerBlue;
+  border: solid DarkSlateBlue;
+}
+
+p a {
+  color: Black;
+  background-color: PaleGreen;
+  border: solid SlateGray;
 }
 
 body {
@@ -14,6 +37,8 @@ footer {
   margin: 0.5em 0;
 }
 footer p {
+  margin: auto;
+  height: 50%;
   text-align: center;
 }
 
@@ -21,6 +46,7 @@ header {
   margin-bottom: 1em;
 }
 header img {
+  margin: auto;
   height: 30%;
   width: 30%;
 }
@@ -49,31 +75,11 @@ header ul li a:hover:not(.active) {
   background-color: #04aa6d;
 }
 
-article {
-  background-color: CornFlowerBlue;
-  border: 0.5em solid DarkSlateBlue;
-  height: 9em;
-  margin: 0.5em 0;
-}
-article img {
-  margin: 0.5em;
-  height: 8em;
-  float: left;
-}
-article .title {
-  font-weight: bold;
-}
 article a {
-  color: Black;
-  background-color: DodgerBlue;
-  border: solid DarkSlateBlue;
   padding: 0.4em;
 }
 
 p a {
-  color: Black;
-  background-color: PaleGreen;
-  border: solid SlateGray;
   padding: 0.4em;
 }
 

@@ -1,6 +1,29 @@
-header img, footer p {
-  margin: auto;
-  width: 50%;
+.comments article {
+  background-color: CornFlowerBlue;
+  border: 0.5em solid DarkSlateBlue;
+  min-height: 9em;
+  max-height: 13em;
+  margin: 0.5em 0;
+}
+.comments article img {
+  margin: 0.5em;
+  height: 8em;
+  float: left;
+}
+.comments article .title {
+  font-weight: bold;
+}
+
+.comments article .deleteComment a {
+  color: Black;
+  background-color: DodgerBlue;
+  border: solid DarkSlateBlue;
+}
+
+.description a {
+  color: Black;
+  background-color: PaleGreen;
+  border: solid SlateGray;
 }
 
 body {
@@ -14,6 +37,8 @@ footer {
   margin: 0.5em 0;
 }
 footer p {
+  margin: auto;
+  height: 50%;
   text-align: center;
 }
 
@@ -21,6 +46,7 @@ header {
   margin-bottom: 1em;
 }
 header img {
+  margin: auto;
   height: 30%;
   width: 30%;
 }
@@ -58,9 +84,6 @@ header ul li a:hover:not(.active) {
   margin: 0 0.5em 0.5em 0.5em;
 }
 .description a {
-  color: Black;
-  background-color: PaleGreen;
-  border: solid SlateGray;
   padding: 0.4em;
 }
 
@@ -69,6 +92,9 @@ header ul li a:hover:not(.active) {
 }
 .comments form div {
   margin: 0.5em 0;
+}
+.comments article .deleteComment {
+  margin: 0.5em 0 0 0.5em;
 }
 
 /*# sourceMappingURL=article.css.map */
