@@ -1,6 +1,7 @@
 @extends('app')
 @section('title', 'Checkout')
 @section('stylesheets')
+<meta name="robots" content="noindex" />
 <link rel="stylesheet" href="{{ asset('css/checkout.css') }}" />
 @endsection
 
@@ -8,7 +9,7 @@
 <h1>Checkout</h1>
 <p>Total price: €{{ $totalSum }}</p>
 <p><a href="{{ route('postPurchase') }}">Make Purchase</a></p>
-<div>
+<section>
     @foreach ($basket as $article)
         <article>
             <img src="{{ asset($article->image) }}" alt="{{ $article->name }}" />
@@ -17,5 +18,5 @@
             <a href="{{ route('removeFromBasket', ['id' => $article->id]) }}">Remove</a>
         </article>
     @endforeach
-</div>
+</section>
 @endsection

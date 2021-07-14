@@ -1,6 +1,7 @@
 @extends('app')
 @section('title', 'Dashboard')
 @section('stylesheets')
+<meta name="robots" content="noindex" />
 <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" />
 @endsection
 
@@ -9,33 +10,34 @@
 <p class="message">{{ $message }}</p>
 @endisset
 <h1>Hello, {{ $user->name }}</h1>
+<div id="purchaseChart"></div>
 <section id="overview">
-    <div>
+    <nav>
         <button class="tablinks" onclick="openTab(event, 'comments')" id="default">Comments</button>
         <button class="tablinks" onclick="openTab(event, 'purchases')">Purchases</button>
-    </div>
+    </nav>
     <hr />
-    <div id="comments" class="tabcontent">
+    <section id="comments" class="tabcontent">
         @foreach($user->comments as $comment)
             <article>
                 @if ($comment->image != null)
-                    <img src="{{ asset($comment->image) }}" />
+                    <img src="{{ asset($comment->image) }}" alt="{{ $comment->title }}" />
                 @endif
                 <p class="deleteComment"><a href="{{ route('deleteComment', ['id' => $comment->id]) }}">Delete</a></p>
                 <h1>{{ $comment->title }}</h1>
                 <p>{{ $comment->body }}</p>
             </article>
         @endforeach
-    </div>
-    <div id="purchases" class="tabcontent">
+    </section>
+    <section id="purchases" class="tabcontent">
         @foreach($user->purchases as $item)
             <article>
-                <img src="{{ asset($item->image) }}" alt="$item->name" />
+                <img src="{{ asset($item->image) }}" alt="{{ $item->name }}" />
                 <h1>{{ $item->name }}</h1>
                 <p>€{{ $item->price }}</p>
             </article>
         @endforeach
-    </div>
+    </section>
 </section>
 @endsection
 

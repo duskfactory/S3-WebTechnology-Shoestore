@@ -30,6 +30,7 @@
         <input type="hidden" name="articleId" value="{{ $article->id }}" />
         <input type="submit" value="Post Comment" />
     </form>
+    <section>
     @foreach ($article->comments as $comment)
         <article>
             @if ($comment->image != null)
@@ -42,5 +43,6 @@
             <p>{{ $comment->body }}</p>
         </article>
     @endforeach
+    </section>
 </section>
 @endsection

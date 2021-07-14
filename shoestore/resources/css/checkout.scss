@@ -4,11 +4,11 @@ article {
     @extend %list-item;
     a {
         @extend %button-color-1;
-        padding: 0.4em;
+        padding: 0.4rem;
     }
 }
 
 p a {
     @extend %button-color-2;
-    padding: 0.4em;
+    padding: 0.4rem;
 }

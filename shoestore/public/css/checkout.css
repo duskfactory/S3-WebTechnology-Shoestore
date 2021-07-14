@@ -1,13 +1,13 @@
 article {
   background-color: CornFlowerBlue;
-  border: 0.5em solid DarkSlateBlue;
-  min-height: 9em;
-  max-height: 13em;
-  margin: 0.5em 0;
+  border: 0.5rem solid DarkSlateBlue;
+  min-height: 9rem;
+  max-height: 13rem;
+  margin: 0.5rem 0;
 }
 article img {
-  margin: 0.5em;
-  height: 8em;
+  margin: 0.5rem;
+  height: 8rem;
   float: left;
 }
 article .title {
@@ -34,7 +34,7 @@ body a {
 }
 
 footer {
-  margin: 0.5em 0;
+  margin: 0.5rem 0;
 }
 footer p {
   margin: auto;
@@ -43,7 +43,7 @@ footer p {
 }
 
 header {
-  margin-bottom: 1em;
+  margin-bottom: 1rem;
 }
 header img {
   margin: auto;
@@ -65,7 +65,7 @@ header ul li a {
   display: block;
   color: white;
   text-align: center;
-  padding: 1em;
+  padding: 1rem;
 }
 header ul li a:hover:not(.active) {
   background-color: #111;
@@ -76,11 +76,11 @@ header ul li a:hover:not(.active) {
 }
 
 article a {
-  padding: 0.4em;
+  padding: 0.4rem;
 }
 
 p a {
-  padding: 0.4em;
+  padding: 0.4rem;
 }
 
 /*# sourceMappingURL=checkout.css.map */
