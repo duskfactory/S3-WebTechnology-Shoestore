@@ -14,7 +14,7 @@
         <ul>
             <li><a href="{{ route('welcome') }}" class="active">Home</a></li>
             @auth
-                <li ondrop="drop(event)" ondragover="allowDrop(event)">
+                <li ondrop="drop(event);" ondragover="allowDrop(event);">
                     <a href="{{ route('checkout') }}">Checkout</a>
                 </li>
                 <li><a href="{{ route('dashboard') }}">Profile</a></li>

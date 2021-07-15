@@ -9,7 +9,7 @@
 @section('main')
 <section>
 @foreach ($articles as $article)
-    <article draggable="true" ondragstart="drag(event)" id="{{ $article->id }}">
+    <article draggable="true" ondragstart="drag(event);" id="{{ $article->id }}">
         <img src="{{ asset($article->image) }}" alt="{{ $article->name }}" />
         <p>{{ $article->name }}</p>
         <p>€{{ $article->price }}</p>
@@ -27,12 +27,12 @@
     }
 
     function drag(ev) {
-        ev.dataTransfer.setData("id", ev.target.id);
+        ev.dataTransfer.setData("text/plain", ev.target.id);
     }
 
     function drop(ev) {
         ev.preventDefault();
-        window.location.replace(`https://shoestore.local/addToBasket/${ev.dataTransfer.getData("id")}`);
+        window.location.href = `https://shoestore.local/addToBasket/${ev.dataTransfer.getData("text")}`;
     }
 </script>
 @endsection
