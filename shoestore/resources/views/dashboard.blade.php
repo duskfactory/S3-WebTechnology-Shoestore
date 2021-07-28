@@ -10,7 +10,6 @@
 <p class="message">{{ $message }}</p>
 @endisset
 <h1>Hello, {{ $user->name }}</h1>
-<div id="purchaseChart"></div>
 <section id="overview">
     <nav>
         <button class="tablinks" onclick="openTab(event, 'comments')" id="default">Comments</button>
